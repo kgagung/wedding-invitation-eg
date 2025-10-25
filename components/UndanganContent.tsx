@@ -232,21 +232,21 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           <img
             src="/images/cloud3-Tema-11.webp"
             alt="Cloud Left"
-            className="absolute bottom-100 right-10 w-40 animate-cloud-down-right opacity-90 z-20"
+            className="absolute top-65 right-10 w-40 animate-cloud-down-right opacity-90 z-20"
           />
 
           {/* Awan Bawah foto 2 */}
           <img
             src="/images/cloud2-Tema-11-1024x509.webp"
             alt="Cloud Right"
-            className="absolute bottom-80 left-75 w-60 animate-cloud-down-right opacity-90 z-20"
+            className="absolute top-75 left-75 w-60 animate-cloud-down-right opacity-90 z-20"
           />
 
           {/* Awan Bawah foto 3 */}
           <img
             src="/images/cloud2-Tema-11-1024x509.webp"
             alt="Cloud Right"
-            className="absolute bottom-115 left-70 w-60 animate-cloud-down-right opacity-90 z-20"
+            className="absolute top-45 left-70 w-60 animate-cloud-down-right opacity-90 z-20"
           />
 
           {/* Awan sebelah kiri */}
@@ -432,32 +432,49 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           ref={(el) => {
             sectionRefs.current[1] = el as HTMLDivElement;
           }}
-          className="greeting-section section-hidden enhanced-card"
+          className="greeting-section relative overflow-hidden w-full section-hidden"
         >
-          <div className="section-decoration top"></div>
+          <h3 className="section-title-aksara animate-fadeInUp">
+            ꦥ꦳ꦱꦁꦒꦤ꧀ꦥꦼꦔꦤ꧀ꦠꦶꦤ꧀
+          </h3>
+          <h3 className="section-title animate-fadeInUp-delayed">
+            Pasangan Pengantin
+          </h3>
 
-          <div className="flower-ornament animate-bounce-slow">
-            <img src="/images/bunga-biru.png" alt="Bunga biru" />
-          </div>
+          <div className="couple-names">
+            <div className="bride animate-slideIn-left">
+              <div className="couple-photo-frame animate-rotate-3d">
+                <div
+                  className="couple-photo"
+                  style={{ backgroundImage: "url('/images/bride.jpg')" }}
+                ></div>
+                <div className="photo-glow"></div>
+              </div>
+              <div className="couple-info">
+                <h4>Erlina Elviana Istiqomah, S.E.</h4>
+                <p>
+                  Putri pertama dari Bpk. Ridwan Setyawan, S.E. & Ibu Yuli
+                  Isruslina, S.E.
+                </p>
+              </div>
+            </div>
 
-          <div className="greeting-content">
-            <p className="greeting animate-fadeInUp-slow">
-              Assalamu'alaikum Warahmatullahi Wabarakatuh
-            </p>
-            <p className="greeting-jawa animate-fadeInUp-slower">
-              ꦲꦱꦭꦲꦸꦩꦸꦭꦲꦶꦑꦸꦩ꧀
-            </p>
+            <div className="and-symbol animate-heartbeat">💖</div>
 
-            <div className="guest-section animate-scale-in">
-              <p className="invitation-text">
-                Dengan penuh hormat, kami mengundang:
-              </p>
-              <p className="guest-name animate-pulse-gentle">{dataTamu.nama}</p>
-              <p className="guest-category">{dataTamu.keterangan}</p>
+            <div className="bridegroom animate-slideIn-right">
+              <div className="couple-photo-frame animate-rotate-3d-delayed">
+                <div
+                  className="couple-photo"
+                  style={{ backgroundImage: "url('/images/groom.jpg')" }}
+                ></div>
+                <div className="photo-glow"></div>
+              </div>
+              <div className="couple-info">
+                <h4>Kuncoro Galih Agung, S.Kom.</h4>
+                <p>Putra pertama dari Bpk. Supriyanto & Ibu Srimiyem</p>
+              </div>
             </div>
           </div>
-
-          <div className="section-decoration bottom"></div>
         </section>
 
         {/* Ayat Al-Quran dengan elegant animation */}

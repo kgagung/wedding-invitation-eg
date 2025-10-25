@@ -46,7 +46,6 @@ body {
 
 @media (min-width: 431px) {
   .mobile-container {
-    margin: 20px auto;
     border-radius: 20px;
     min-height: calc(100vh - 40px);
   }
@@ -606,11 +605,6 @@ body {
     max-width: 100%;
     margin: 0;
     border-radius: 0;
-  }
-
-  .cover-container,
-  .invitation-content {
-    padding: 15px;
   }
 
   .guest-name {
@@ -1391,20 +1385,8 @@ html {
 
 /* Responsive Design */
 @media (max-width: 380px) {
-  .home-content {
-    padding: 15px;
-  }
-
-  .welcome-card {
-    padding: 30px 20px;
-  }
-
   .home-title {
     font-size: 1.7rem;
-  }
-
-  .guest-link {
-    padding: 14px 16px;
   }
 }
 
@@ -1685,10 +1667,6 @@ html {
   .countdown-timer {
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
-  }
-
-  .countdown-item {
-    padding: 10px 8px;
   }
 
   .countdown-number {
