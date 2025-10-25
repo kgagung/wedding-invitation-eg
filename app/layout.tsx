@@ -1,8 +1,8 @@
-import './globals.css';
+import "./globals.css";
 
 export const metadata = {
-  title: 'Undangan Pernikahan Adat Jawa',
-  description: 'Undangan pernikahan dengan tema adat Jawa',
+  title: "Undangan Pernikahan Adat Jawa",
+  description: "Undangan pernikahan dengan tema adat Jawa",
 };
 
 export default function RootLayout({
@@ -12,9 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
