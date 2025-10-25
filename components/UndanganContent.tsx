@@ -434,19 +434,50 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           }}
           className="greeting-section relative overflow-hidden w-full section-hidden"
         >
-          <h3 className="section-title-aksara animate-fadeInUp">
-            ꦥ꦳ꦱꦁꦒꦤ꧀ꦥꦼꦔꦤ꧀ꦠꦶꦤ꧀
-          </h3>
-          <h3 className="section-title animate-fadeInUp-delayed">
-            Pasangan Pengantin
-          </h3>
-
           <div className="couple-names">
             <div className="bride animate-slideIn-left">
+              <img
+                src="/images/gunungan-vector.png"
+                alt="gunungan"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-345"
+                style={{
+                  width: "150px",
+                  height: "auto",
+                  marginTop: "-170px",
+                  marginLeft: "-100px",
+                  zIndex: 0, // di belakang
+                }}
+              />
+
+              <img
+                src="/images/gunungan-vector.png"
+                alt="gunungan"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-320"
+                style={{
+                  width: "100px",
+                  height: "auto",
+                  marginTop: "-130px",
+                  marginLeft: "-135px",
+                  zIndex: 0, // di belakang
+                }}
+              />
+
+              <img
+                src="/images/gunungan-vector.png"
+                alt="gunungan"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-15"
+                style={{
+                  width: "200px",
+                  height: "auto",
+                  marginTop: "-170px",
+                  marginLeft: "100px",
+                  zIndex: 0, // di belakang
+                }}
+              />
               <div className="couple-photo-frame animate-rotate-3d">
                 <div
                   className="couple-photo"
-                  style={{ backgroundImage: "url('/images/bride.jpg')" }}
+                  style={{ backgroundImage: "url('/images/foto-wanita.png')" }}
                 ></div>
                 <div className="photo-glow"></div>
               </div>
@@ -462,10 +493,48 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             <div className="and-symbol animate-heartbeat">💖</div>
 
             <div className="bridegroom animate-slideIn-right">
+              <img
+                src="/images/gunungan-vector.png"
+                alt="gunungan"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-345"
+                style={{
+                  width: "150px",
+                  height: "auto",
+                  marginTop: "-170px",
+                  marginLeft: "-100px",
+                  zIndex: 0, // di belakang
+                }}
+              />
+
+              <img
+                src="/images/gunungan-vector.png"
+                alt="gunungan"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-320"
+                style={{
+                  width: "100px",
+                  height: "auto",
+                  marginTop: "-130px",
+                  marginLeft: "-135px",
+                  zIndex: 0, // di belakang
+                }}
+              />
+
+              <img
+                src="/images/gunungan-vector.png"
+                alt="gunungan"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-15"
+                style={{
+                  width: "200px",
+                  height: "auto",
+                  marginTop: "-170px",
+                  marginLeft: "100px",
+                  zIndex: 0, // di belakang
+                }}
+              />
               <div className="couple-photo-frame animate-rotate-3d-delayed">
                 <div
                   className="couple-photo"
-                  style={{ backgroundImage: "url('/images/groom.jpg')" }}
+                  style={{ backgroundImage: "url('/images/foto-pria.png')" }}
                 ></div>
                 <div className="photo-glow"></div>
               </div>
@@ -584,49 +653,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             sectionRefs.current[5] = el as HTMLDivElement;
           }}
           className="couple-section section-hidden enhanced-card"
-        >
-          <h3 className="section-title-aksara animate-fadeInUp">
-            ꦥ꦳ꦱꦁꦒꦤ꧀ꦥꦼꦔꦤ꧀ꦠꦶꦤ꧀
-          </h3>
-          <h3 className="section-title animate-fadeInUp-delayed">
-            Pasangan Pengantin
-          </h3>
-
-          <div className="couple-names">
-            <div className="bride animate-slideIn-left">
-              <div className="couple-photo-frame animate-rotate-3d">
-                <div
-                  className="couple-photo"
-                  style={{ backgroundImage: "url('/images/bride.jpg')" }}
-                ></div>
-                <div className="photo-glow"></div>
-              </div>
-              <div className="couple-info">
-                <h4>Erlina Elviana Istiqomah, S.E.</h4>
-                <p>
-                  Putri pertama dari Bpk. Ridwan Setyawan, S.E. & Ibu Yuli
-                  Isruslina, S.E.
-                </p>
-              </div>
-            </div>
-
-            <div className="and-symbol animate-heartbeat">💖</div>
-
-            <div className="bridegroom animate-slideIn-right">
-              <div className="couple-photo-frame animate-rotate-3d-delayed">
-                <div
-                  className="couple-photo"
-                  style={{ backgroundImage: "url('/images/groom.jpg')" }}
-                ></div>
-                <div className="photo-glow"></div>
-              </div>
-              <div className="couple-info">
-                <h4>Kuncoro Galih Agung, S.Kom.</h4>
-                <p>Putra pertama dari Bpk. Supriyanto & Ibu Srimiyem</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        ></section>
 
         {/* Gallery Prewedding Slider dengan enhanced transitions */}
         <section
@@ -855,7 +882,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
         </div>
 
         <div className="footer-couple animate-bounce-very-slow">
-          <span>Erlina & Kuncoro</span>
+          <span>Erlina & Galih</span>
         </div>
 
         <div className="footer-decoration bottom"></div>
