@@ -85,7 +85,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
       {/* Header */}
       <header
-        ref={(el) => (sectionRefs.current[0] = el)}
+        ref={(el) => {
+          sectionRefs.current[0] = el as HTMLDivElement;
+        }}
         className="invitation-header section-hidden"
       >
         <div className="wayang-ornament animate-float-slow">
@@ -104,7 +106,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
       <main className="invitation-main">
         {/* Salam Pembuka */}
         <section
-          ref={(el) => (sectionRefs.current[1] = el)}
+          ref={(el) => {
+            sectionRefs.current[1] = el as HTMLDivElement;
+          }}
           className="greeting-section section-hidden"
         >
           <div className="flower-ornament animate-bounce-slow">
@@ -124,7 +128,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
         {/* Detail Acara */}
         <section
-          ref={(el) => (sectionRefs.current[2] = el)}
+          ref={(el) => {
+            sectionRefs.current[2] = el as HTMLDivElement;
+          }}
           className="event-section section-hidden"
         >
           <h3>ꦢꦺꦠ꦳ꦺꦭ꧀ꦲꦕꦫ</h3>
@@ -156,7 +162,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
         {/* Pasangan Pengantin */}
         <section
-          ref={(el) => (sectionRefs.current[3] = el)}
+          ref={(el) => {
+            sectionRefs.current[3] = el as HTMLDivElement;
+          }}
           className="couple-section section-hidden"
         >
           <h3>ꦥ꦳ꦱꦁꦒꦤ꧀ꦥꦼꦔꦤ꧀ꦠꦶꦤ꧀</h3>
@@ -197,7 +205,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
         {/* Gallery Prewedding Slider */}
         <section
-          ref={(el) => (sectionRefs.current[4] = el)}
+          ref={(el) => {
+            sectionRefs.current[4] = el as HTMLDivElement;
+          }}
           className="gallery-section section-hidden"
         >
           <h3>ꦒꦭꦺꦫꦶ</h3>
@@ -239,7 +249,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
         {/* Konfirmasi Kehadiran */}
         <section
-          ref={(el) => (sectionRefs.current[5] = el)}
+          ref={(el) => {
+            sectionRefs.current[5] = el as HTMLDivElement;
+          }}
           className="confirmation-section section-hidden"
         >
           <h3>Konfirmasi Kehadiran</h3>
