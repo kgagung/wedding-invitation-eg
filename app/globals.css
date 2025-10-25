@@ -1056,3 +1056,668 @@ html {
   transition: color 0.3s ease, background-color 0.3s ease,
     border-color 0.3s ease;
 }
+
+/* ===== HOME PAGE STYLES ===== */
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fef6e4 0%, #f9f0e1 50%, #f5e9d9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Background */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.floating-petal {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.1;
+  animation: floatAround 15s linear infinite;
+}
+
+.petal-1 {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.petal-2 {
+  top: 80%;
+  right: 10%;
+  animation-delay: 3s;
+}
+
+.petal-3 {
+  top: 60%;
+  left: 8%;
+  animation-delay: 6s;
+}
+
+.petal-4 {
+  top: 20%;
+  right: 5%;
+  animation-delay: 9s;
+}
+
+@keyframes floatAround {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, 20px) rotate(90deg);
+  }
+  50% {
+    transform: translate(0, 40px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-20px, 20px) rotate(270deg);
+  }
+}
+
+/* Home Content */
+.home-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0 30px;
+  position: relative;
+}
+
+.header-ornament {
+  display: flex;
+  align-items: center;
+}
+
+.ornament-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b4513, #a0522d);
+  opacity: 0.6;
+}
+
+.header-ornament.left::before,
+.header-ornament.right::before {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8b4513);
+  margin: 0 15px;
+}
+
+.header-ornament.right::before {
+  background: linear-gradient(90deg, #8b4513, transparent);
+}
+
+.header-main {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.home-title {
+  font-size: 2rem;
+  color: #8b4513;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.jawa-subtitle {
+  font-size: 0.9rem;
+  color: #5a3921;
+  opacity: 0.8;
+  font-family: "Arial Unicode MS", sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Welcome Section */
+.welcome-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.welcome-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.85)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 40px rgba(139, 69, 19, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.card-decoration {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8b4513, transparent);
+}
+
+.card-decoration.top {
+  top: 20px;
+}
+
+.card-decoration.bottom {
+  bottom: 20px;
+}
+
+.welcome-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: gentleBounce 3s ease-in-out infinite;
+}
+
+@keyframes gentleBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.welcome-title {
+  font-size: 1.5rem;
+  color: #8b4513;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.welcome-message {
+  color: #5a3921;
+  font-size: 1rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0;
+  gap: 10px;
+}
+
+.divider-line {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #8b4513, transparent);
+}
+
+.divider-flower {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.instruction {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+/* Guest List */
+.guest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.guest-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 69, 19, 0.05),
+    rgba(160, 82, 45, 0.03)
+  );
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.guest-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.guest-link:hover::before {
+  left: 100%;
+}
+
+.guest-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.15);
+  border-color: rgba(139, 69, 19, 0.3);
+}
+
+.guest-name {
+  font-size: 1.1rem;
+  color: #8b4513;
+  font-weight: 600;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.guest-relation {
+  font-size: 0.8rem;
+  color: #666;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.guest-link:hover .guest-name {
+  color: #5a3921;
+}
+
+.guest-link:hover .guest-relation {
+  opacity: 1;
+}
+
+.link-arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8b4513;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.guest-link:hover .link-arrow {
+  opacity: 1;
+  transform: translateY(-50%) translateX(3px);
+}
+
+/* Footer */
+.home-footer {
+  text-align: center;
+  padding: 30px 0 20px;
+}
+
+.footer-text {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.footer-couple {
+  color: #8b4513;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 380px) {
+  .home-content {
+    padding: 15px;
+  }
+
+  .welcome-card {
+    padding: 30px 20px;
+  }
+
+  .home-title {
+    font-size: 1.7rem;
+  }
+
+  .guest-link {
+    padding: 14px 16px;
+  }
+}
+
+/* Smooth entrance animation */
+.home-container {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced focus states for accessibility */
+.guest-link:focus {
+  outline: 2px solid #8b4513;
+  outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .floating-petal,
+  .welcome-icon,
+  .guest-link,
+  .home-container {
+    animation: none;
+  }
+
+  .guest-link:hover {
+    transform: none;
+  }
+}
+
+/* ===== QURAN SECTION STYLES ===== */
+.quran-section {
+  margin: 35px 0;
+  padding: 30px 25px;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 69, 19, 0.08),
+    rgba(160, 82, 45, 0.05)
+  );
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.quran-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.quran-verse {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #5a3921;
+  margin-bottom: 15px;
+  font-style: italic;
+  text-align: center;
+}
+
+.quran-source {
+  font-size: 0.9rem;
+  color: #8b4513;
+  font-weight: 600;
+}
+
+/* ===== COUNTDOWN SECTION STYLES ===== */
+.countdown-section {
+  margin: 35px 0;
+  padding: 30px 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.countdown-section h3 {
+  font-size: 1.4rem;
+  color: #8b4513;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.countdown-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #5a3921;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.countdown-timer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 30px 0;
+  padding: 0 10px;
+}
+
+.countdown-item {
+  background: linear-gradient(135deg, #8b4513, #a0522d);
+  color: white;
+  padding: 20px 10px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+}
+
+.countdown-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.countdown-label {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.countdown-date {
+  font-size: 1rem;
+  color: #8b4513;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+/* ===== AMPLOP SECTION STYLES ===== */
+.amplop-section {
+  margin: 35px 0;
+  padding: 30px 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.amplop-section h3 {
+  font-size: 1.4rem;
+  color: #8b4513;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.amplop-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #5a3921;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.amplop-toggle-btn {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  font-size: 1rem;
+}
+
+.amplop-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.amplop-content {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bank-card,
+.address-card {
+  background: linear-gradient(135deg, #fef6e4, #f9f0e1);
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  text-align: left;
+}
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.bank-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: white;
+  padding: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bank-info {
+  flex: 1;
+}
+
+.bank-name {
+  font-size: 0.9rem;
+  color: #5a3921;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.account-number {
+  font-size: 1.1rem;
+  color: #8b4513;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.address-card {
+  text-align: center;
+}
+
+.address-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.address-title {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.address-name {
+  font-size: 1.1rem;
+  color: #8b4513;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.address-detail {
+  font-size: 0.9rem;
+  color: #5a3921;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.copy-btn {
+  background: rgba(139, 69, 19, 0.1);
+  color: #8b4513;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.copy-btn:hover {
+  background: #8b4513;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 380px) {
+  .countdown-timer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .countdown-item {
+    padding: 15px 8px;
+  }
+
+  .countdown-number {
+    font-size: 1.5rem;
+  }
+
+  .bank-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .bank-logo {
+    width: 40px;
+    height: 40px;
+  }
+}
