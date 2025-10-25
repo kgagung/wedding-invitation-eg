@@ -1,0 +1,14 @@
+{
+  "budi-santoso": {
+    "nama": "Budi Santoso",
+    "jumlahTamu": 2,
+    "salam": "Bapak/Ibu/Saudara/i",
+    "keterangan": "Keluarga Mempelai Pria"
+  },
+  "sari-dewi": {
+    "nama": "Sari Dewi",
+    "jumlahTamu": 1,
+    "salam": "Saudari",
+    "keterangan": "Teman SMA Mempelai Wanita"
+  }
+}
