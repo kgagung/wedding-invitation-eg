@@ -434,6 +434,61 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           }}
           className="greeting-section relative overflow-hidden w-full section-hidden"
         >
+          {/* Awan Bawah foto 1 */}
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-70 right-10 w-40 animate-float-medium z-20"
+          />
+
+          {/* Awan Bawah foto 2 */}
+          <img
+            src="/images/cloud2-Tema-11-1024x509.webp"
+            alt="Cloud Right"
+            className="absolute top-50 left-70 w-60 animate-float-medium z-20"
+          />
+
+          {/* Awan Bawah foto kiri 1 (mirror dari kanan) */}
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Left Mirrored"
+            className="absolute top-70 left-10 w-40 animate-float-medium z-20 scale-x-[-1]"
+          />
+
+          {/* Awan Bawah foto kiri 2 (mirror dari kanan) */}
+          <img
+            src="/images/cloud2-Tema-11-1024x509.webp"
+            alt="Cloud Right Mirrored"
+            className="absolute top-50 right-70 w-60 animate-float-medium z-20 scale-x-[-1]"
+          />
+
+          {/* Awan Bawah foto 1 */}
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute bottom-55 right-10 w-40 animate-float-medium z-20"
+          />
+
+          {/* Awan Bawah foto 2 */}
+          <img
+            src="/images/cloud2-Tema-11-1024x509.webp"
+            alt="Cloud Right"
+            className="absolute bottom-65 left-70 w-60 animate-float-medium z-20"
+          />
+
+          {/* Awan Bawah foto kiri 1 (mirror dari kanan) */}
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Left Mirrored"
+            className="absolute bottom-55 left-10 w-40 animate-float-medium z-20 scale-x-[-1]"
+          />
+
+          {/* Awan Bawah foto kiri 2 (mirror dari kanan) */}
+          <img
+            src="/images/cloud2-Tema-11-1024x509.webp"
+            alt="Cloud Right Mirrored"
+            className="absolute bottom-65 right-70 w-60 animate-float-medium z-20 scale-x-[-1]"
+          />
           <div className="couple-names">
             <div className="bride animate-slideIn-left">
               <img
@@ -482,11 +537,40 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 <div className="photo-glow"></div>
               </div>
               <div className="couple-info">
-                <h4>Erlina Elviana Istiqomah, S.E.</h4>
-                <p>
-                  Putri pertama dari Bpk. Ridwan Setyawan, S.E. & Ibu Yuli
-                  Isruslina, S.E.
+                <h1
+                  className="text-center"
+                  style={{
+                    fontFamily: '"Cinzel Decorative", Sans-serif',
+                    fontSize: "28px",
+                    fontWeight: 600,
+                    color: "#5a3921",
+                    lineHeight: "1.2",
+                  }}
+                >
+                  Erlina Elviana Istiqomah, S.E.
+                </h1>
+                <p style={{ marginTop: "10px" }}>
+                  Putri pertama dari <br /> Bpk. Ridwan Setyawan, S.E. & Ibu
+                  Yuli Isruslina, S.E.
                 </p>
+                <a
+                  href="https://instagram.com/erlinaelviana_"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-[#5a3921] text-[#5a3921] px-4 py-2 rounded-full shadow-lg hover:bg-[#5a3921] hover:text-white transition-all duration-300"
+                  style={{ marginTop: "20px" }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                    style={{ marginLeft: "10px" }}
+                  >
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm8 2.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" />
+                  </svg>
+                  <p style={{ marginRight: "10px" }}>Instagram</p>
+                </a>
               </div>
             </div>
 
@@ -539,8 +623,40 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 <div className="photo-glow"></div>
               </div>
               <div className="couple-info">
-                <h4>Kuncoro Galih Agung, S.Kom.</h4>
-                <p>Putra pertama dari Bpk. Supriyanto & Ibu Srimiyem</p>
+                <h1
+                  className="text-center"
+                  style={{
+                    fontFamily: '"Cinzel Decorative", Sans-serif',
+                    fontSize: "28px",
+                    fontWeight: 600,
+                    color: "#5a3921",
+                    lineHeight: "1.2",
+                  }}
+                >
+                  Kuncoro Galih Agung, S.Kom.
+                </h1>
+                <p style={{ marginTop: "10px" }}>
+                  Putra pertama dari <br /> Bpk. Supriyanto & Ibu Srimiyem
+                </p>
+
+                <a
+                  href="https://instagram.com/galihkga"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-[#5a3921] text-[#5a3921] px-4 py-2 rounded-full shadow-lg hover:bg-[#5a3921] hover:text-white transition-all duration-300"
+                  style={{ marginTop: "20px" }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                    style={{ marginLeft: "10px" }}
+                  >
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm8 2.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" />
+                  </svg>
+                  <p style={{ marginRight: "10px" }}>Instagram</p>
+                </a>
               </div>
             </div>
           </div>

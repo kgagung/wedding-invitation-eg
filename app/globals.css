@@ -657,6 +657,16 @@ html {
   }
 }
 
+@keyframes bounceFast {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 @keyframes pulseSlow {
   0%,
   100% {
@@ -696,8 +706,8 @@ html {
   animation: floatSlow 4s ease-in-out infinite;
 }
 
-.animate-bounce-slow {
-  animation: bounceSlow 2s ease-in-out infinite;
+.animate-bounce-fast {
+  animation: bounceFast 2s ease-in-out infinite;
 }
 
 .animate-pulse-slow {
@@ -918,7 +928,7 @@ html {
   width: 300px;
   height: 300px;
   margin: 0 auto 15px;
-  padding: 4px;
+  padding: 8px;
   background-image: url("/images/ornament-profile.png");
   background-size: cover; /* Ensures the image covers the entire frame */
   background-position: center; /* Centers the image */
@@ -1772,6 +1782,10 @@ html {
 }
 .animate-bounce-slow {
   animation: bounceSlow 3s ease-in-out infinite;
+}
+
+.animate-bounce-medium {
+  animation: bounceMedium 3s ease-in-out infinite;
 }
 .animate-pulse-slow {
   animation: pulseSlow 2s ease-in-out infinite;
