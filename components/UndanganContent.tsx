@@ -232,87 +232,123 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           <img
             src="/images/cloud3-Tema-11.webp"
             alt="Cloud Left"
-            className="absolute bottom-100 right-10 w-25 md:w-40 animate-cloud-down-right opacity-90 z-20"
+            className="absolute bottom-100 right-10 w-40 animate-cloud-down-right opacity-90 z-20"
           />
 
           {/* Awan Bawah foto 2 */}
           <img
             src="/images/cloud2-Tema-11-1024x509.webp"
             alt="Cloud Right"
-            className="absolute bottom-80 left-75 w-40 md:w-60 animate-cloud-down-right opacity-90 z-20"
+            className="absolute bottom-80 left-75 w-60 animate-cloud-down-right opacity-90 z-20"
           />
 
           {/* Awan Bawah foto 3 */}
           <img
             src="/images/cloud2-Tema-11-1024x509.webp"
             alt="Cloud Right"
-            className="absolute bottom-115 left-60 w-40 md:w-60 animate-cloud-down-right opacity-90 z-20"
+            className="absolute bottom-115 left-70 w-60 animate-cloud-down-right opacity-90 z-20"
           />
 
           {/* Awan sebelah kiri */}
           <img
             src="/images/cloud2-Tema-11-1024x509.webp"
             alt="Cloud Right"
-            className="absolute bottom-10 right-85 w-20 md:w-40 animate-cloud-down-right z-20"
+            className="absolute bottom-10 right-85 w-40 animate-cloud-down-right z-20"
           />
 
           <img
             src="/images/cloud2-Tema-11-1024x509.webp"
             alt="Cloud Right"
-            className="absolute bottom-20 right-85 w-40 md:w-60 animate-cloud-down-right z-15"
+            className="absolute bottom-20 right-78 w-60 animate-cloud-down-right z-15"
+          />
+
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute bottom-20 right-75 w-20 animate-cloud-down-right z-15"
           />
 
           <img
             src="/images/rama-sinta.png"
             alt="Wayang Ornament"
-            className="absolute bottom-20 right-65 w-30 md:w-50 animate-float-slow z-10"
+            className="absolute bottom-20 right-65 w-50 animate-float-slow z-10"
           />
 
           {/* Konten header */}
           <div className="header-content flex justify-between items-start md:items-center w-full px-4 md:px-8 py-4 md:py-6 relative z-10">
             {/* Kiri - Nama & Tanggal */}
             <div
-              className="header-text flex flex-col items-center justify-center text-white rounded-b-2xl shadow-md"
+              className="header-text flex flex-col items-center justify-center rounded-b-2xl shadow-md"
               style={{
                 backgroundColor: "#925E2D",
-                width: "140px",
-                height: "500px",
-                marginTop: "-160px",
+                width: "180px",
+                height: "450px",
+                marginTop: "-100px",
                 marginLeft: "20px",
                 marginRight: "20px",
               }}
             >
               <h1
-                className="text-xl md:text-2xl font-semibold text-center mt-4"
-                style={{ marginTop: "70px" }}
+                className="text-center mt-4"
+                style={{
+                  fontFamily: '"Cinzel Decorative", Sans-serif',
+                  fontSize: "28px",
+                  fontWeight: 600,
+                  color: "#FDF2D6",
+                  marginTop: "70px",
+                  lineHeight: "1.2",
+                }}
               >
                 ERLINA
-                <br /> &
-                <br />
+                <br /> &<br />
                 GALIH
               </h1>
+
               <p
                 className="text-xs md:text-sm"
                 style={{
-                  marginTop: "8px",
+                  marginTop: "30px",
+                  color: "#FDF2D6",
                 }}
               >
                 Save Our Date
               </p>
-              <div
-                className="mt-0 pt-1 text-center"
-                style={{ marginTop: "12px" }}
-              >
-                <h2 className="text-lg font-bold leading-none">16</h2>
-                <h2 className="text-lg font-bold leading-none">11</h2>
-                <h2 className="text-lg font-bold leading-none">'25</h2>
+
+              <div className="mt-0 pt-1 text-center">
+                <p
+                  className="leading-none"
+                  style={{
+                    fontSize: "32pt",
+                    color: "#FDF2D6",
+                  }}
+                >
+                  16
+                </p>
+                <p
+                  className="leading-none"
+                  style={{
+                    fontSize: "32pt",
+                    color: "#FDF2D6",
+                  }}
+                >
+                  11
+                </p>
+                <p
+                  className="leading-none"
+                  style={{
+                    fontSize: "32pt",
+                    color: "#FDF2D6",
+                  }}
+                >
+                  '25
+                </p>
               </div>
             </div>
 
             {/* Kanan - Foto */}
             <div
-              className="header-photo relative w-40 h-60 md:w-40 md:h-80 rounded-2xl overflow-hidden shadow-xl border-8 border-[#5a3921] z-20"
-              style={{ marginRight: "20px" }}
+              className="header-photo relative w-40 h-80 rounded-2xl overflow-hidden shadow-xl border-8 border-[#5a3921] z-20"
+              style={{ marginRight: "20px", marginTop: "20px" }}
             >
               <img
                 src="/images/prewedding/prewed-15.jpg"
@@ -369,6 +405,28 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           </div>
         </section>
 
+        <div
+          style={{
+            backgroundColor: "#5a3921",
+            height: "60px", // ubah sesuai kebutuhan (misal 100px, 150px, dst)
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#FDF2D6", // warna teks biar kontras
+          }}
+        >
+          <h1
+            style={{
+              fontFamily: '"Cinzel Decorative", Sans-serif',
+              fontSize: "16px",
+              fontWeight: 600,
+              margin: 0, // hapus margin default <h1>
+            }}
+          >
+            Kedua Mempelai
+          </h1>
+        </div>
+
         {/* Salam Pembuka dengan enhanced entrance */}
         <section
           ref={(el) => {
@@ -394,9 +452,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
               <p className="invitation-text">
                 Dengan penuh hormat, kami mengundang:
               </p>
-              <h2 className="guest-name animate-pulse-gentle">
-                {dataTamu.nama}
-              </h2>
+              <p className="guest-name animate-pulse-gentle">{dataTamu.nama}</p>
               <p className="guest-category">{dataTamu.keterangan}</p>
             </div>
           </div>
