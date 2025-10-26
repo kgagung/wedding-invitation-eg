@@ -29,11 +29,23 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
   // Data foto prewedding
   const preweddingPhotos = [
-    "/images/prewedding/prewed-1.jpg",
-    "/images/prewedding/prewed-2.jpg",
-    "/images/prewedding/prewed-13.jpg",
-    "/images/prewedding/prewed-14.jpg",
+    "/images/prewedding/prewed-3.jpg",
+    "/images/prewedding/prewed-9.jpg",
+    "/images/prewedding/prewed-6.jpg",
+    "/images/prewedding/prewed-11.jpg",
+    "/images/prewedding/prewed-16.jpg",
+    "/images/prewedding/prewed-19.jpg",
   ];
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openPopup = (index: number) => {
+    setCurrentIndex(index);
+    setIsOpen(true);
+  };
+
+  const closePopup = () => setIsOpen(false);
 
   // Initialize audio
   useEffect(() => {
@@ -147,15 +159,14 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
   }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % preweddingPhotos.length);
+    setCurrentIndex((prev) => (prev + 1) % preweddingPhotos.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide(
+    setCurrentIndex(
       (prev) => (prev - 1 + preweddingPhotos.length) % preweddingPhotos.length
     );
   };
-
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
       // Show custom notification instead of alert
@@ -1093,14 +1104,71 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           }}
           className="couple-section section-hidden enhanced-card"
         >
-          <p>
-            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
-            pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
-            dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
-            kasih dan sayang. Sungguh, pada yang demikian itu benar-benar
-            terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
-          </p>
-          <p>(QS Ar-Rum : 21)</p>
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-3 left-[-60] w-60 animate-cloud-down-left z-20"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Right"
+            className="absolute top-3 right-[-60] w-60 animate-cloud-up-right z-20  scale-x-[-1]"
+          />
+
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-76 left-[-60] w-60 animate-cloud-down-left z-20"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Right"
+            className="absolute top-76 right-[-60] w-60 animate-cloud-up-right z-20  scale-x-[-1]"
+          />
+          <div
+            className="quran-section"
+            style={{
+              border: "7px solid #5a3921",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                marginBottom: "20px",
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="64"
+                height="64"
+                viewBox="0 0 128 128"
+                stroke="#5a3921"
+              >
+                <title>WEDDING ARCH</title>
+                <g>
+                  <path d="M81.581,33.512a24.761,24.761,0,0,1,2.958,3.68,1.75,1.75,0,1,0,2.926-1.921,28.291,28.291,0,0,0-3.378-4.2,1.75,1.75,0,0,0-2.506,2.443Z"></path>
+                  <path d="M121.5,119.75H107.06V115.5a1.745,1.745,0,0,0-1.5-1.725V98.332a4.055,4.055,0,0,0,3.472-1.021c1.291-1.291,1.4-3.4.438-5.515,2.179-.817,3.59-2.382,3.59-4.208s-1.406-3.385-3.578-4.2c.983-2.124.866-4.2-.45-5.519-1.18-1.181-3.042-1.362-4.972-.65V50.64A40.128,40.128,0,0,0,78.526,13.312,8.616,8.616,0,0,0,64,7.1a8.611,8.611,0,0,0-14.522,6.215A40.128,40.128,0,0,0,23.94,50.64V77.216c-1.931-.712-3.793-.531-4.973.649-1.291,1.291-1.4,3.4-.437,5.515-2.18.817-3.59,2.383-3.59,4.208s1.411,3.391,3.59,4.208c-.963,2.12-.854,4.224.437,5.515a4.056,4.056,0,0,0,3.473,1.021v15.443a1.745,1.745,0,0,0-1.5,1.725v4.25H6.5a1.75,1.75,0,0,0,0,3.5h115a1.75,1.75,0,0,0,0-3.5ZM96.56,100.091a3.657,3.657,0,0,0,5.5,0V113.75h-5.5Zm10-19.751c.154.155.135,1.471-1.24,3.069a1.75,1.75,0,0,0,1.2,2.886c2.1.158,3.045,1.075,3.045,1.293s-.945,1.136-3.045,1.293a1.75,1.75,0,0,0-1.2,2.887c1.374,1.6,1.393,2.913,1.238,3.068s-1.471.135-3.067-1.239a1.75,1.75,0,0,0-2.886,1.2c-.158,2.1-1.076,3.046-1.294,3.046s-1.136-.944-1.293-3.046a1.75,1.75,0,0,0-2.887-1.2c-1.595,1.373-2.909,1.4-3.068,1.239s-.135-1.471,1.239-3.068a1.75,1.75,0,0,0-1.2-2.887c-2.1-.157-3.045-1.075-3.045-1.293S90,86.453,92.105,86.3a1.75,1.75,0,0,0,1.2-2.886c-1.375-1.6-1.394-2.914-1.24-3.069s1.467-.138,3.068,1.24a1.751,1.751,0,0,0,2.887-1.2c.157-2.1,1.074-3.046,1.293-3.046s1.136.944,1.294,3.046a1.75,1.75,0,0,0,2.886,1.2C105.087,80.205,106.4,80.184,106.558,80.34ZM54.242,21.709l5.118,5.118C54.844,38.7,46.185,51.16,39.43,58.407a1.75,1.75,0,1,0,2.56,2.386A112.874,112.874,0,0,0,61.6,30.619c-1.81,20.157-7.36,34.5-17.4,44.951-.653.672-1.324,1.334-2.005,1.976-.883.832-1.81,1.637-2.765,2.421a3.684,3.684,0,0,0-1.012-2.1c-1.182-1.181-3.043-1.362-4.973-.649V50.64A30.758,30.758,0,0,1,54.242,21.709Zm19.516,0A30.757,30.757,0,0,1,94.56,50.64V77.215c-1.931-.713-3.792-.531-4.972.65a3.73,3.73,0,0,0-1.03,2.087c-.947-.781-1.87-1.58-2.747-2.406-.682-.642-1.354-1.3-2-1.968C73.76,65.115,68.21,50.776,66.4,30.617A112.871,112.871,0,0,0,86.01,60.793a1.75,1.75,0,0,0,2.56-2.386c-6.755-7.247-15.414-19.7-19.93-31.58ZM40.027,83.95a58.405,58.405,0,0,0,4.564-3.857Q45.668,79.077,46.712,78C55.784,68.56,61.38,56.248,64,39.8c2.62,16.447,8.217,28.759,17.294,38.207.688.709,1.4,1.407,2.116,2.085a58.575,58.575,0,0,0,4.561,3.857,4.332,4.332,0,0,0-2.411,3.637A4.14,4.14,0,0,0,87.5,90.921c-.185.3-.359.593-.521.888-3.647,6.448-5.977,17.028-6.2,27.941H47.228C47,108.837,44.67,98.257,41.033,91.825q-.252-.454-.531-.9a4.14,4.14,0,0,0,1.938-3.333A4.332,4.332,0,0,0,40.027,83.95ZM100.56,50.64V74.074a3.428,3.428,0,0,0-2.5,0V50.64A34.293,34.293,0,0,0,76.449,18.972a8.808,8.808,0,0,0,.687-.909c.015-.022.027-.046.041-.068a8.527,8.527,0,0,0,.638-1.2A36.622,36.622,0,0,1,100.56,50.64ZM54.47,9.75a5.123,5.123,0,0,1,7.239,0L62.763,10.8a1.75,1.75,0,0,0,2.474,0l1.054-1.054a5.118,5.118,0,0,1,7.238,7.239L64,26.518l-9.529-9.53A5.124,5.124,0,0,1,54.47,9.75ZM50.19,16.8a8.533,8.533,0,0,0,1.351,2.163A34.305,34.305,0,0,0,29.94,50.64V74.066a3.624,3.624,0,0,0-1.25-.228,3.508,3.508,0,0,0-1.25.236V50.64A36.624,36.624,0,0,1,50.19,16.8ZM21.442,94.836c-.154-.154-.135-1.471,1.239-3.068a1.75,1.75,0,0,0-1.2-2.887c-2.1-.157-3.046-1.075-3.046-1.293s.944-1.135,3.046-1.293a1.75,1.75,0,0,0,1.2-2.887c-1.374-1.6-1.393-2.914-1.239-3.068s1.472-.134,3.068,1.24a1.75,1.75,0,0,0,2.887-1.2c.158-2.1,1.075-3.046,1.293-3.046s1.136.944,1.293,3.046a1.751,1.751,0,0,0,2.887,1.2c1.6-1.375,2.913-1.394,3.068-1.24s.135,1.471-1.239,3.068A1.75,1.75,0,0,0,35.9,86.3c2.1.158,3.045,1.075,3.045,1.293S38,88.724,35.9,88.881a1.751,1.751,0,0,0-1.2,2.887c1.374,1.6,1.393,2.913,1.239,3.068s-1.472.135-3.068-1.239a1.751,1.751,0,0,0-2.887,1.2c-.157,2.1-1.075,3.046-1.293,3.046s-1.135-.944-1.293-3.046a1.75,1.75,0,0,0-2.887-1.2C22.913,94.972,21.6,94.99,21.442,94.836Zm7.248,6.5a3.87,3.87,0,0,0,2.75-1.214V113.75h-5.5V100.091A3.859,3.859,0,0,0,28.69,101.338ZM24.44,119.75v-2.5h8.5v2.5Zm12,0V115.5a1.745,1.745,0,0,0-1.5-1.725V98.333a4.056,4.056,0,0,0,3.473-1.022,3.542,3.542,0,0,0,.805-1.281c2.654,6.031,4.321,14.718,4.513,23.72ZM88.783,96.031a3.523,3.523,0,0,0,.8,1.279,4.058,4.058,0,0,0,3.473,1.023v15.442a1.744,1.744,0,0,0-1.5,1.725v4.25H84.269C84.462,110.754,86.126,102.072,88.783,96.031ZM95.06,119.75v-2.5h8.5v2.5Z"></path>
+                  <path d="M99.31,82.238a5.35,5.35,0,1,0,5.35,5.35A5.355,5.355,0,0,0,99.31,82.238Zm0,7.2a1.85,1.85,0,1,1,1.85-1.85A1.852,1.852,0,0,1,99.31,89.438Z"></path>
+                  <path d="M28.69,92.938a5.35,5.35,0,1,0-5.35-5.35A5.356,5.356,0,0,0,28.69,92.938Zm0-7.2a1.85,1.85,0,1,1-1.85,1.85A1.852,1.852,0,0,1,28.69,85.738Z"></path>
+                </g>
+              </svg>
+            </div>
+
+            <p className="leading-4">
+              "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+              pasangan-pasangan untukmu dari jenismu sendiri, agar kamu
+              cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di
+              antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu
+              benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang
+              berpikir."
+            </p>
+            <p>(QS Ar-Rum : 21)</p>
+            <div style={{ marginBottom: "40px" }}></div>
+          </div>
         </section>
 
         {/* Gallery Prewedding Slider dengan enhanced transitions */}
@@ -1110,60 +1178,84 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           }}
           className="gallery-section section-hidden enhanced-card"
         >
-          <h3 className="section-title-aksara animate-fadeInUp">ꦒꦭꦺꦫꦶ</h3>
-          <h3 className="section-title animate-fadeInUp-delayed">
-            Gallery Cinta Kami
-          </h3>
+          <h1
+            className="text-center mt-4"
+            style={{
+              fontFamily: '"Cinzel Decorative", Sans-serif',
+              fontSize: "28px",
+              fontWeight: 1800,
+              color: "#2f1b10",
+              lineHeight: "1.2",
+            }}
+          >
+            Gallery
+          </h1>
+          <h1
+            className="text-center mt-4"
+            style={{
+              fontFamily: '"Cinzel Decorative", Sans-serif',
+              fontSize: "28px",
+              fontWeight: 600,
+              color: "#5a3921",
+              lineHeight: "1.2",
+              marginBottom: "20px",
+            }}
+          >
+            cinta kami
+          </h1>
 
-          <div className="slider-container enhanced-slider">
-            <div className="slider-wrapper">
-              {preweddingPhotos.map((photo, index) => (
-                <div
-                  key={index}
-                  className={`slide ${index === currentSlide ? "active" : ""} ${
-                    index === currentSlide
-                      ? "animate-zoom-in"
-                      : "animate-zoom-out"
-                  }`}
-                  style={{ backgroundImage: `url(${photo})` }}
-                >
-                  <div className="slide-overlay animate-fadeIn-slow"></div>
-                  <div className="slide-number">
-                    {index + 1} / {preweddingPhotos.length}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Enhanced Navigation Buttons */}
-            <button
-              className="slider-nav prev animate-bounce-horizontal"
-              onClick={prevSlide}
-            >
-              <span>‹</span>
-            </button>
-            <button
-              className="slider-nav next animate-bounce-horizontal"
-              onClick={nextSlide}
-            >
-              <span>›</span>
-            </button>
-
-            {/* Enhanced Dots Indicator */}
-            <div className="slider-dots">
-              {preweddingPhotos.map((_, index) => (
-                <button
-                  key={index}
-                  className={`dot ${
-                    index === currentSlide
-                      ? "active animate-pulse"
-                      : "animate-fadeIn"
-                  }`}
-                  onClick={() => setCurrentSlide(index)}
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-3 gap-4 px-6">
+            {preweddingPhotos.map((photo, index) => (
+              <div
+                key={index}
+                className="relative overflow-hidden rounded-xl shadow-lg cursor-pointer group"
+                onClick={() => openPopup(index)}
+              >
+                <img
+                  src={photo}
+                  alt={`Prewedding ${index + 1}`}
+                  className="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"
                 />
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+
+          {/* Popup / Modal */}
+          {isOpen && (
+            <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50">
+              <button
+                className="absolute top-6 right-8 text-white text-4xl font-bold hover:text-gray-400 transition"
+                onClick={closePopup}
+              >
+                ✕
+              </button>
+
+              <button
+                className="absolute left-5 text-white text-5xl font-bold hover:text-gray-400 transition"
+                onClick={prevSlide}
+              >
+                ‹
+              </button>
+
+              <img
+                src={preweddingPhotos[currentIndex]}
+                alt="Full View"
+                className="max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-2xl"
+              />
+
+              <button
+                className="absolute right-5 text-white text-5xl font-bold hover:text-gray-400 transition"
+                onClick={nextSlide}
+              >
+                ›
+              </button>
+
+              <div className="absolute bottom-6 text-white text-sm">
+                {currentIndex + 1} / {preweddingPhotos.length}
+              </div>
+            </div>
+          )}
         </section>
 
         {/* Amplop Digital dengan toggle animation */}

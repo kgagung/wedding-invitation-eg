@@ -395,22 +395,42 @@ body {
 .couple-section {
   margin: 35px 0;
   padding: 25px 20px;
-  background: white;
+  text-align: center;
+}
+
+/* Couple Section */
+.quran-section {
+  margin: 35px 0;
+  padding: 25px 20px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
-  border: 1px solid rgba(139, 69, 19, 0.1);
+  border: 12px solid rgba(139, 69, 19, 0.1);
 }
 
-.couple-section h3:first-child {
+.quran-section h3:first-child {
   font-size: 1rem;
   color: #5a3921;
   margin-bottom: 5px;
   font-family: "Arial Unicode MS", sans-serif;
-  opacity: 0.8;
+  opacity: 0.3;
 }
 
-.couple-section h3:last-child {
+.quran-section p {
+  font-size: 0.9rem;
+  color: #5a3921;
+  margin-bottom: 5px;
+  margin-inline: 25px;
+  font-family: "Arial Unicode MS", sans-serif;
+}
+
+.quran-section h3:last-child {
   font-size: 1.3rem;
   color: #8b4513;
   margin-bottom: 25px;
@@ -2165,7 +2185,7 @@ html {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.2),
     transparent
   );
   transition: left 0.5s ease;
@@ -2212,6 +2232,18 @@ html {
   }
 }
 
+@keyframes cloudUpRight {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-30px, 25px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 @keyframes cloudDownRight {
   0% {
     transform: translate(0, 0);
@@ -2238,6 +2270,10 @@ html {
 
 .animate-cloud-up-left {
   animation: cloudUpLeft 8s ease-in-out infinite;
+}
+
+.animate-cloud-up-right {
+  animation: cloudUpRight 8s ease-in-out infinite;
 }
 
 .animate-cloud-down-right {
