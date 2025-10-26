@@ -1,31 +1,26 @@
 {
   "amalia-rizki": {
     "nama": "Amalia Rizki",
-    "jumlahTamu": 2,
     "salam": "Saudara/i",
     "keterangan": "Teman SMA Mempelai Wanita"
   },
   "sari-dewi": {
     "nama": "Sari Dewi",
-    "jumlahTamu": 1,
     "salam": "Saudari",
     "keterangan": "Teman SMA Mempelai Wanita"
   },
   "divani-dima": {
     "nama": "Divani Dima Kurniawan",
-    "jumlahTamu": 99,
     "salam": "Wedus",
     "keterangan": "Teman ASU"
   },
   "lutfian-fajrul": {
     "nama": "Bapa",
-    "jumlahTamu": 1,
     "salam": "Shalom",
     "keterangan": "Tujuan Umat"
   },
   "muh-addin": {
     "nama": "Raden Mas Addin",
-    "jumlahTamu": 8,
     "salam": "Shalom",
     "keterangan": "Tujuan Umat"
   }

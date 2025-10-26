@@ -181,6 +181,161 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
     });
   };
 
+  // Di dalam component UndanganContent
+  const [attendanceStatus, setAttendanceStatus] = useState("");
+  const [message, setMessage] = useState("");
+  interface ConfirmationStatus {
+    type: "success" | "error" | null;
+    message: string | null;
+  }
+
+  const [confirmationStatus, setConfirmationStatus] =
+    useState<ConfirmationStatus | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [jumlahTamuHadir, setJumlahTamuHadir] = useState(1); // Default 1 orang
+
+  // State untuk konfirmasi
+  const [pesanTamu, setPesanTamu] = useState([]);
+  const [loadingPesan, setLoadingPesan] = useState(false);
+
+  // Function untuk load pesan tamu
+  const loadPesanTamu = async () => {
+    setLoadingPesan(true);
+    try {
+      console.log("Loading pesan tamu...");
+
+      const response = await fetch("/api/konfirmasi", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        cache: "no-cache",
+      });
+
+      console.log("Response status:", response.status);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("API response:", result);
+
+      if (result.success) {
+        // Filter hanya yang ada pesan dan akan hadir
+        const pesanDenganUcapan = result.data
+          .filter((item) => item.pesan && item.pesan.trim() !== "")
+          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        console.log("Filtered messages:", pesanDenganUcapan);
+        setPesanTamu(pesanDenganUcapan);
+      } else {
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      console.error("Error loading messages:", error);
+      // Fallback: tampilkan pesan error yang user-friendly
+      setPesanTamu([]);
+    } finally {
+      setLoadingPesan(false);
+    }
+  };
+
+  // Function untuk handle konfirmasi
+  const handleConfirmation = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!attendanceStatus) {
+      setConfirmationStatus({
+        type: "error",
+        message: "Silakan pilih status kehadiran terlebih dahulu",
+      });
+      return;
+    }
+
+    // Validasi untuk yang memilih hadir tapi jumlah tamu 0
+    if (attendanceStatus === "hadir" && jumlahTamuHadir === 0) {
+      setConfirmationStatus({
+        type: "error",
+        message: "Silakan pilih jumlah tamu yang akan hadir",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const confirmationData = {
+      nama: dataTamu.nama,
+      jumlahTamu: attendanceStatus === "hadir" ? jumlahTamuHadir : 0,
+      salam: dataTamu.salam,
+      keterangan: dataTamu.keterangan,
+      kehadiran: attendanceStatus,
+      pesan: message,
+    };
+
+    try {
+      console.log("Sending confirmation:", confirmationData);
+
+      const response = await fetch("/api/konfirmasi", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(confirmationData),
+      });
+
+      console.log("Response status:", response.status);
+
+      const result = await response.json();
+      console.log("Response data:", result);
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to save data");
+      }
+
+      if (result.success) {
+        setConfirmationStatus({
+          type: "success",
+          message:
+            attendanceStatus === "hadir"
+              ? `✅ Konfirmasi berhasil! Terima kasih atas konfirmasi kehadiran ${jumlahTamuHadir} orang.`
+              : "✅ Konfirmasi berhasil! Terima kasih atas konfirmasinya.",
+        });
+
+        // Reset form
+        setAttendanceStatus("");
+        setJumlahTamuHadir(1);
+        setMessage("");
+
+        // Reload pesan tamu untuk menampilkan yang baru
+        setTimeout(() => {
+          loadPesanTamu();
+        }, 1000);
+      } else {
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      console.error("Error saving confirmation:", error);
+      setConfirmationStatus({
+        type: "error",
+        message: "❌ Gagal menyimpan konfirmasi. Silakan coba lagi.",
+      });
+    } finally {
+      setIsSubmitting(false);
+
+      // Auto clear status message setelah 5 detik
+      setTimeout(() => {
+        setConfirmationStatus(null);
+      }, 5000);
+    }
+  };
+
+  // Load data saat component mount
+  useEffect(() => {
+    loadPesanTamu();
+  }, []);
+
   return (
     <div
       className={`invitation-content enhanced-animations ${
@@ -1183,7 +1338,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             style={{
               fontFamily: '"Cinzel Decorative", Sans-serif',
               fontSize: "28px",
-              fontWeight: 1800,
+              fontWeight: 800,
               color: "#2f1b10",
               lineHeight: "1.2",
             }}
@@ -1258,18 +1413,299 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           )}
         </section>
 
-        {/* Amplop Digital dengan toggle animation */}
         <section
           ref={(el) => {
             sectionRefs.current[7] = el as HTMLDivElement;
           }}
-          className="amplop-section section-hidden enhanced-card"
+          className="timeline-section section-hidden enhanced-card"
+        >
+          <h1
+            className="text-center mt-4"
+            style={{
+              fontFamily: '"Cinzel Decorative", Sans-serif',
+              fontSize: "28px",
+              fontWeight: 800,
+              color: "#2f1b10",
+              lineHeight: "1.2",
+              marginTop: "50px",
+            }}
+          >
+            Cerita
+          </h1>
+          <h1
+            className="text-center mt-4"
+            style={{
+              fontFamily: '"Cinzel Decorative", Sans-serif',
+              fontSize: "28px",
+              fontWeight: 600,
+              color: "#5a3921",
+              lineHeight: "1.2",
+              marginBottom: "20px",
+            }}
+          >
+            tentang kita
+          </h1>
+
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Right"
+            className="absolute top-0 right-0 w-40 animate-cloud-down-right opacity-90 z-20"
+          />
+
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-0 left-0 w-40 animate-cloud-down-right opacity-90 z-20 scale-x-[-1]"
+          />
+
+          {/* Timeline Container */}
+          <div className="timeline-container relative max-w-2xl mx-auto px-4 sm:px-6">
+            {/* Timeline Items */}
+            <div className="space-y-8 relative z-10">
+              {/* Item 1 - Awal Bertemu */}
+              <div className="timeline-item group relative pl-12">
+                <div className="absolute left-6 top-2 transform -translate-x-1/2 z-10">
+                  <div className="timeline-heart w-6 h-6 bg-[#925E2D] border-2 border-white rounded-xl shadow-lg group-hover:scale-125 transition-transform duration-300 relative flex items-center justify-center">
+                    <svg
+                      className="w-3 h-3 text-[#FDF2D6]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Konten di kanan */}
+                <div className="timeline-content">
+                  <div className="p-4">
+                    <span
+                      style={{
+                        fontFamily: '"Nunito", Sans-serif',
+                        color: "#000000",
+                        fontWeight: "400",
+                        fontSize: "16px",
+                      }}
+                    >
+                      2018
+                    </span>
+                    <h3
+                      className="leading-none"
+                      style={{
+                        fontFamily: '"Nunito", Sans-serif',
+                        color: "#8F5B2A",
+                        fontWeight: "700",
+                        fontSize: "1.5rem",
+                        marginBlock: "10px",
+                      }}
+                    >
+                      Awal Bertemu
+                    </h3>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ textAlign: "justify" }}
+                    >
+                      Masih teringat saat pertama kali kamu bertemu, yaitu
+                      mengikuti ekstrakurikuler yang sama. Saat itu kami kelas
+                      11 SMA, mengikuti ekstrakurikuler karawitan. Pertemanan
+                      kami semakin dekat karena banyak bertemu untuk
+                      mempersiapkan lomba.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Item 2 - Berkomitmen */}
+              <div className="timeline-item group relative pl-12">
+                <div className="absolute left-6 top-2 transform -translate-x-1/2 z-10">
+                  <div className="timeline-heart w-6 h-6 bg-[#925E2D] border-2 border-white rounded-xl shadow-lg group-hover:scale-125 transition-transform duration-300 relative flex items-center justify-center">
+                    <svg
+                      className="w-3 h-3 text-[#FDF2D6]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Konten di kanan */}
+                <div className="timeline-content">
+                  <div className="p-4">
+                    <span
+                      style={{
+                        fontFamily: '"Nunito", Sans-serif',
+                        color: "#000000",
+                        fontWeight: "400",
+                        fontSize: "16px",
+                      }}
+                    >
+                      25 Juni 2019
+                    </span>
+                    <h3
+                      className="leading-none"
+                      style={{
+                        fontFamily: '"Nunito", Sans-serif',
+                        color: "#8F5B2A",
+                        fontWeight: "700",
+                        fontSize: "1.5rem",
+                        marginBlock: "10px",
+                      }}
+                    >
+                      Memutuskan Berkomitmen
+                    </h3>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ textAlign: "justify" }}
+                    >
+                      Setelah 1 tahun semakin dekat dan akrab, kami berkomitmen
+                      untuk menjalin hubungan yang lebih serius. Saling
+                      memberikan dukungan dan kasih sayang sehingga kami semakin
+                      kuat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Item 3 - Lamaran */}
+              <div className="timeline-item group relative pl-12">
+                <div className="absolute left-6 top-2 transform -translate-x-1/2 z-10">
+                  <div className="timeline-heart w-6 h-6 bg-[#925E2D] border-2 border-white rounded-xl shadow-lg group-hover:scale-125 transition-transform duration-300 relative flex items-center justify-center">
+                    <svg
+                      className="w-3 h-3 text-[#FDF2D6]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Konten di kanan */}
+                <div className="timeline-content">
+                  <div className="p-4">
+                    <span
+                      style={{
+                        fontFamily: '"Nunito", Sans-serif',
+                        color: "#000000",
+                        fontWeight: "400",
+                        fontSize: "16px",
+                      }}
+                    >
+                      17 Agustus 2025
+                    </span>
+                    <h3
+                      className="leading-none"
+                      style={{
+                        fontFamily: '"Nunito", Sans-serif',
+                        color: "#8F5B2A",
+                        fontWeight: "700",
+                        fontSize: "1.5rem",
+                        marginBlock: "10px",
+                      }}
+                    >
+                      Lamaran
+                    </h3>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ textAlign: "justify" }}
+                    >
+                      Setelah perjalanan panjang yang kami lalui, akhirnya kami
+                      memutuskan untuk melaksanakan prosesi lamaran sederhana.
+                      Dengan dihadiri keluarga inti, kami melaksanakan lamaran
+                      dengan penuh hikmat dan haru.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Item 4 - Pernikahan */}
+              <div className="timeline-item group relative pl-12">
+                <div className="absolute left-6 top-2 transform -translate-x-1/2 z-10">
+                  <div className="timeline-heart w-6 h-6 bg-[#925E2D] border-2 border-white rounded-xl shadow-lg group-hover:scale-125 transition-transform duration-300 relative flex items-center justify-center">
+                    <svg
+                      className="w-3 h-3 text-[#FDF2D6]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Konten di kanan */}
+                <div className="timeline-content">
+                  <div className="p-4">
+                    <span
+                      style={{
+                        fontFamily: '"Nunito", Sans-serif',
+                        color: "#000000",
+                        fontWeight: "400",
+                        fontSize: "16px",
+                      }}
+                    >
+                      14 November 2025
+                    </span>
+                    <h3
+                      className="leading-none"
+                      style={{
+                        fontFamily: '"Nunito", Sans-serif',
+                        color: "#8F5B2A",
+                        fontWeight: "700",
+                        fontSize: "1.5rem",
+                        marginBlock: "10px",
+                      }}
+                    >
+                      Pernikahan
+                    </h3>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ textAlign: "justify" }}
+                    >
+                      Setelah lebih dari 6 tahun berkomitmen dalam hubungan,
+                      kami memiliki tujuan selanjutnya yang lebih jauh yaitu
+                      pernikahan. Terpilihlah tanggal tersebut sebagai hari
+                      pernikahan kami.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Amplop Digital dengan toggle animation */}
+        <section
+          ref={(el) => {
+            sectionRefs.current[8] = el as HTMLDivElement;
+          }}
+          className="amplop-section section-hidden enhanced-card z-50"
         >
           <h3 className="section-title animate-fadeInUp">Amplop Digital</h3>
-          <p className="amplop-description animate-fadeInUp-delayed">
-            Doa Restu Anda merupakan karunia yang sangat berarti bagi kami.
-            Namun jika memberi adalah ungkapan tanda kasih Anda, Anda dapat
-            memberi kado secara cashless.
+          <p
+            className="amplop-description animate-fadeInUp-delayed"
+            style={{ textAlign: "justify" }}
+          >
+            Do'a restu keluarga, sahabat, serta rekan-rekan semua di pernikahan
+            kami sudah sangat cukup sebagai hadiah, namun jika memberi merupakan
+            tanda kasih, kami dengan senang hati menerimanya dan tentunya
+            semakin melengkapi kebahagiaan kami.
           </p>
 
           <button
@@ -1376,32 +1812,310 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           </div>
         </section>
 
-        {/* Konfirmasi Kehadiran dengan WhatsApp integration */}
+        {/* Background Section */}
+        <div className="relative w-full top-[-150] h-[200px] overflow-hidden">
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundColor: "#8e5a2a",
+              backgroundImage:
+                "linear-gradient(135deg, #8e5a2a 0%, #a67c52 100%)",
+            }}
+          ></div>
+
+          {/* Awan Belakang */}
+          <img
+            src="/images/mempelai-bot1-tema-11-1024x468.webp"
+            alt="Awan Belakang"
+            className="absolute bottom-0 left-0 w-full z-10 opacity-80"
+          />
+
+          {/* Awan Depan */}
+          <img
+            src="/images/mempelai-bot2-tema-11-1024x304.webp"
+            alt="Awan Depan"
+            className="absolute bottom-0 left-0 w-full z-20"
+          />
+        </div>
+
+        {/* Konfirmasi Kehadiran Section */}
         <section
           ref={(el) => {
-            sectionRefs.current[8] = el as HTMLDivElement;
+            sectionRefs.current[9] = el as HTMLDivElement;
           }}
-          className="confirmation-section section-hidden enhanced-card"
+          className="confirmation-section section-hidden enhanced-card relative z-30 -mt-20 pt-20 pb-12"
+          style={{
+            backgroundColor: "#8e5a2a",
+            backgroundImage:
+              "linear-gradient(135deg, #8e5a2a 0%, #a67c52 50%, #8e5a2a 100%)",
+          }}
         >
-          <h3 className="section-title animate-fadeInUp">
-            Konfirmasi Kehadiran
-          </h3>
-          <p className="guest-count animate-fadeInUp-delayed">
-            Jumlah tamu:{" "}
-            <span className="highlight">{dataTamu.jumlahTamu}</span> orang
-          </p>
-          <a
-            href={`https://wa.me/6281234567890?text=Halo,%20saya%20${encodeURIComponent(
-              dataTamu.nama
-            )}%20akan%20hadir%20dengan%20${dataTamu.jumlahTamu}%20orang`}
-            className="whatsapp-btn animate-pulse-gentle"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="btn-icon">💬</span>
-            <span className="btn-text">Konfirmasi via WhatsApp</span>
-            <span className="btn-arrow">→</span>
-          </a>
+          {/* Dekorasi */}
+          <div className="absolute top-4 left-4 right-4 flex justify-between items-center opacity-60">
+            <img
+              src="/images/cloud3-Tema-11.webp"
+              alt="Cloud Left"
+              className="w-20 animate-float-slow"
+            />
+            <img
+              src="/images/cloud3-Tema-11.webp"
+              alt="Cloud Right"
+              className="w-20 animate-float-medium scale-x-[-1]"
+            />
+          </div>
+
+          <div className="relative z-10 max-w-md mx-auto px-6">
+            <h3
+              className="section-title text-center animate-fadeInUp mb-6"
+              style={{
+                fontFamily: '"Cinzel Decorative", Sans-serif',
+                fontSize: "24px",
+                color: "#FDF2D6",
+                textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
+              }}
+            >
+              Konfirmasi Kehadiran
+            </h3>
+
+            {/* Info Tamu */}
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 mb-6 border border-[#FDF2D6]/30">
+              <p className="text-[#FDF2D6] text-center text-sm">
+                <strong>{dataTamu.nama}</strong>
+                <br />
+                <span className="opacity-90">{dataTamu.keterangan}</span>
+              </p>
+            </div>
+
+            {/* Form Konfirmasi */}
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-[#FDF2D6]/30">
+              <form onSubmit={handleConfirmation} className="space-y-6">
+                {/* Status Kehadiran */}
+                <div>
+                  <label className="block text-sm font-medium text-[#5a3921] mb-3 text-center">
+                    Apakah Anda akan hadir?
+                  </label>
+                  <div className="flex justify-center space-x-4">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAttendanceStatus("hadir");
+                        // Reset jumlah tamu jika memilih tidak hadir
+                        if (attendanceStatus === "tidak-hadir") {
+                          setJumlahTamuHadir(1);
+                        }
+                      }}
+                      className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                        attendanceStatus === "hadir"
+                          ? "bg-green-500 text-white shadow-lg scale-105"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                    >
+                      ✅ Akan Hadir
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAttendanceStatus("tidak-hadir");
+                        // Set jumlah tamu 0 jika tidak hadir
+                        setJumlahTamuHadir(0);
+                      }}
+                      className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                        attendanceStatus === "tidak-hadir"
+                          ? "bg-red-500 text-white shadow-lg scale-105"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                    >
+                      ❌ Tidak Hadir
+                    </button>
+                  </div>
+                </div>
+
+                {/* Pilihan Jumlah Tamu - Hanya tampil jika memilih "Akan Hadir" */}
+                {attendanceStatus === "hadir" && (
+                  <div className="animate-fadeIn">
+                    <label className="block text-sm font-medium text-[#5a3921] mb-3 text-center">
+                      Berapa orang yang akan hadir?
+                    </label>
+                    <div className="grid grid-cols-3 gap-3">
+                      {[1, 2, 3, 4, 5, 6].map((jumlah) => (
+                        <button
+                          key={jumlah}
+                          type="button"
+                          onClick={() => setJumlahTamuHadir(jumlah)}
+                          className={`py-3 rounded-lg font-semibold transition-all duration-300 border-2 ${
+                            jumlahTamuHadir === jumlah
+                              ? "bg-[#925E2D] text-white border-[#925E2D] shadow-lg scale-105"
+                              : "bg-white text-[#5a3921] border-[#925E2D]/30 hover:border-[#925E2D] hover:bg-[#FDF2D6]"
+                          }`}
+                        >
+                          {jumlah} {jumlah === 1 ? "Orang" : "Orang"}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Pesan/Ucapan */}
+                <div>
+                  <label className="block text-sm font-medium text-[#5a3921] mb-2">
+                    Pesan / Ucapan untuk Mempelai
+                    <span className="text-xs text-gray-500 ml-1">
+                      (pesan akan ditampilkan di website)
+                    </span>
+                  </label>
+                  <textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    rows={3}
+                    className="w-full px-4 py-3 rounded-lg border border-[#925E2D]/30 focus:border-[#925E2D] focus:ring-2 focus:ring-[#925E2D]/20 transition-all duration-300 bg-white/80 resize-none"
+                    placeholder="Tuliskan ucapan dan doa untuk mempelai. Pesan Anda akan ditampilkan di website..."
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={
+                    !attendanceStatus ||
+                    (attendanceStatus === "hadir" && jumlahTamuHadir === 0)
+                  }
+                  className={`w-full py-4 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 ${
+                    attendanceStatus &&
+                    (attendanceStatus === "tidak-hadir" || jumlahTamuHadir > 0)
+                      ? "bg-gradient-to-r from-[#925E2D] to-[#5a3921] text-white hover:shadow-xl transform hover:scale-105"
+                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  }`}
+                >
+                  <span className="btn-icon">💌</span>
+                  <span className="btn-text">
+                    {isSubmitting ? "Mengirim..." : "Kirim Konfirmasi"}
+                  </span>
+                </button>
+              </form>
+            </div>
+
+            {/* Status Message */}
+            {confirmationStatus && (
+              <div
+                className={`mt-4 text-center text-sm p-3 rounded-lg ${
+                  confirmationStatus.type === "success"
+                    ? "bg-green-100 text-green-800 border border-green-200"
+                    : "bg-red-100 text-red-800 border border-red-200"
+                }`}
+              >
+                {confirmationStatus.message}
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section
+          ref={(el) => {
+            sectionRefs.current[10] = el as HTMLDivElement;
+          }}
+          className="pesan-tamu-section section-hidden enhanced-card py-12 bg-[#FDF2D6]"
+        >
+          <div className="max-w-4xl mx-auto px-6">
+            {/* Header */}
+            <div className="text-center mb-12">
+              <h2
+                className="text-3xl font-bold mb-4"
+                style={{
+                  fontFamily: '"Cinzel Decorative", Sans-serif',
+                  color: "#5a3921",
+                }}
+              >
+                Ucapan & Doa
+              </h2>
+              <div className="w-24 h-1 bg-[#925E2D] mx-auto rounded-full"></div>
+              <p className="text-[#5a3921] mt-4 opacity-80">
+                Doa dan ucapan dari keluarga & sahabat
+              </p>
+            </div>
+
+            {/* Grid Pesan */}
+            {pesanTamu.length === 0 ? (
+              <div className="text-center py-12">
+                <div className="text-6xl mb-4">💌</div>
+                <p className="text-[#5a3921] text-lg">
+                  Jadilah yang pertama mengirimkan ucapan!
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {pesanTamu.map(
+                  (tamu: {
+                    id: string;
+                    nama: string;
+                    keterangan: string;
+                    tanggal: string;
+                    pesan: string;
+                    kehadiran: string;
+                    jumlahTamu: number;
+                  }) => (
+                    <div
+                      key={tamu.id}
+                      className="bg-white rounded-2xl shadow-lg p-6 border border-[#925E2D]/20 hover:shadow-xl transition-all duration-300"
+                    >
+                      {/* Header Pesan */}
+                      <div className="flex items-start space-x-3 mb-4">
+                        <div className="flex-shrink-0">
+                          <div className="w-10 h-10 bg-gradient-to-br from-[#925E2D] to-[#5a3921] rounded-full flex items-center justify-center text-white text-sm font-bold">
+                            {tamu.nama.charAt(0)}
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-[#5a3921]">
+                            {tamu.nama}
+                          </h4>
+                          <p className="text-xs text-gray-500">
+                            {tamu.keterangan} •{" "}
+                            {new Date(tamu.tanggal).toLocaleDateString("id-ID")}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Isi Pesan */}
+                      <div className="bg-[#FDF2D6]/50 rounded-lg p-4 border border-[#925E2D]/10">
+                        <p className="text-[#5a3921] leading-relaxed text-sm">
+                          "{tamu.pesan}"
+                        </p>
+                      </div>
+
+                      {/* Footer */}
+                      <div className="flex justify-between items-center mt-4 pt-4 border-t border-[#925E2D]/10">
+                        <span
+                          className={`text-xs px-2 py-1 rounded-full ${
+                            tamu.kehadiran === "hadir"
+                              ? "bg-green-100 text-green-800"
+                              : "bg-red-100 text-red-800"
+                          }`}
+                        >
+                          {tamu.kehadiran === "hadir"
+                            ? "✓ Akan Hadir"
+                            : "Tidak Hadir"}
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          {tamu.jumlahTamu} orang
+                        </span>
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
+            )}
+
+            {/* Refresh Button */}
+            <div className="text-center mt-8">
+              <button
+                onClick={loadPesanTamu}
+                className="inline-flex items-center space-x-2 bg-[#925E2D] text-white px-6 py-3 rounded-full hover:bg-[#5a3921] transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <span>🔄</span>
+                <span>Muat Ulang Pesan</span>
+              </button>
+            </div>
+          </div>
         </section>
       </main>
 
