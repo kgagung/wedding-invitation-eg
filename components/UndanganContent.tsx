@@ -461,34 +461,6 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             alt="Cloud Right Mirrored"
             className="absolute top-50 right-70 w-60 animate-float-medium z-20 scale-x-[-1]"
           />
-
-          {/* Awan Bawah foto 1 */}
-          <img
-            src="/images/cloud3-Tema-11.webp"
-            alt="Cloud Left"
-            className="absolute bottom-55 right-10 w-40 animate-float-medium z-20"
-          />
-
-          {/* Awan Bawah foto 2 */}
-          <img
-            src="/images/cloud2-Tema-11-1024x509.webp"
-            alt="Cloud Right"
-            className="absolute bottom-65 left-70 w-60 animate-float-medium z-20"
-          />
-
-          {/* Awan Bawah foto kiri 1 (mirror dari kanan) */}
-          <img
-            src="/images/cloud3-Tema-11.webp"
-            alt="Cloud Left Mirrored"
-            className="absolute bottom-55 left-10 w-40 animate-float-medium z-20 scale-x-[-1]"
-          />
-
-          {/* Awan Bawah foto kiri 2 (mirror dari kanan) */}
-          <img
-            src="/images/cloud2-Tema-11-1024x509.webp"
-            alt="Cloud Right Mirrored"
-            className="absolute bottom-65 right-70 w-60 animate-float-medium z-20 scale-x-[-1]"
-          />
           <div className="couple-names">
             <div className="bride animate-slideIn-left">
               <img
@@ -573,9 +545,44 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 </a>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="and-symbol animate-heartbeat">💖</div>
+        <section
+          ref={(el) => {
+            sectionRefs.current[2] = el as HTMLDivElement;
+          }}
+          className="greeting-section relative overflow-hidden w-full section-hidden"
+        >
+          {/* Awan Bawah foto 1 */}
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-70 right-10 w-40 animate-float-medium z-20"
+          />
 
+          {/* Awan Bawah foto 2 */}
+          <img
+            src="/images/cloud2-Tema-11-1024x509.webp"
+            alt="Cloud Right"
+            className="absolute top-50 left-70 w-60 animate-float-medium z-20"
+          />
+
+          {/* Awan Bawah foto kiri 1 (mirror dari kanan) */}
+          <img
+            src="/images/cloud3-Tema-11.webp"
+            alt="Cloud Left Mirrored"
+            className="absolute top-70 left-10 w-40 animate-float-medium z-20 scale-x-[-1]"
+          />
+
+          {/* Awan Bawah foto kiri 2 (mirror dari kanan) */}
+          <img
+            src="/images/cloud2-Tema-11-1024x509.webp"
+            alt="Cloud Right Mirrored"
+            className="absolute top-50 right-70 w-60 animate-float-medium z-20 scale-x-[-1]"
+          />
+
+          <div className="couple-names">
             <div className="bridegroom animate-slideIn-right">
               <img
                 src="/images/gunungan-vector.png"
@@ -662,104 +669,420 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           </div>
         </section>
 
-        {/* Ayat Al-Quran dengan elegant animation */}
-        <section
-          ref={(el) => {
-            sectionRefs.current[2] = el as HTMLDivElement;
-          }}
-          className="quran-section section-hidden enhanced-card quran-card"
-        >
-          <div className="quran-icon animate-rotate-slow">📖</div>
-          <div className="quran-content">
-            <p className="quran-verse animate-typewriter">
-              "Dan di antara tanda-tanda kekuasaan-Nya diciptakan-Nya untukmu
-              pasangan hidup dari jenismu sendiri supaya kamu dapat ketenangan
-              hati dan dijadikannya kasih sayang di antara kamu. Sesungguhnya
-              yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang
-              yang berpikir."
-            </p>
-            <p className="quran-source animate-fadeInUp-delayed">
-              - Q.S. Ar-Rum: 21 -
-            </p>
-          </div>
-        </section>
+        <div className="relative w-full h-[270px] overflow-hidden">
+          {/* Awan Belakang */}
+          <img
+            src="/images/mempelai-bot1-tema-11-1024x468.webp"
+            alt="Awan Belakang"
+            className="absolute bottom-0 left-0 w-full z-0"
+          />
 
-        {/* Countdown Timer dengan digital animation */}
+          {/* Wayang di tengah */}
+          <img
+            src="/images/wayang-new1-Tema-11.webp"
+            alt="Wayang Ornament"
+            className="absolute bottom-[-40] left-15 -translate-x-1/2 w-64 z-10 animate-float-slow"
+          />
+
+          {/* Gunungan di tengah */}
+          <img
+            src="/images/wayang-bot-Tema-11.webp"
+            alt="Wayang Ornament"
+            className="absolute bottom-5 right-[-70] -translate-x-1/2 w-35 z-10 animate-float-slow"
+          />
+
+          {/* Awan Depan */}
+          <img
+            src="/images/mempelai-bot2-tema-11-1024x304.webp"
+            alt="Awan Depan"
+            className="absolute bottom-0 left-0 w-full z-20"
+          />
+        </div>
+        <div
+          style={{
+            backgroundColor: "#5a3921",
+            height: "60px", // ubah sesuai kebutuhan (misal 100px, 150px, dst)
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#FDF2D6", // warna teks biar kontras
+          }}
+        >
+          <h1
+            style={{
+              fontFamily: '"Nunito", Sans-serif',
+              fontSize: "16px",
+              fontWeight: 600,
+              margin: 0, // hapus margin default <h1>
+            }}
+          >
+            RANGKAIAN ACARA
+          </h1>
+        </div>
+
+        {/* Detail Acara dengan card animations */}
         <section
           ref={(el) => {
             sectionRefs.current[3] = el as HTMLDivElement;
           }}
-          className="countdown-section section-hidden enhanced-card countdown-card"
+          className="event-section section-hidden enhanced-card"
         >
-          <h3 className="countdown-title animate-slideIn-left">
-            Count The Date
-          </h3>
-          <p className="countdown-description animate-slideIn-right">
-            Siang dan malam berganti begitu cepat, diantara saat saat
-            mendebarkan yang belum pernah kami rasakan sebelum nya. kami
-            nantikan kehadiran para keluarga dan sahabat, untuk menjadi saksi
-            ikrar janji suci kami di hari yang bahagia:
-          </p>
+          <img
+            src="/images/bg-akad-1-Tema-11.webp"
+            alt="Akad"
+            className="absolute top-15 w-full h-auto z-0"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-50 left-[-60] w-60 animate-float-medium z-20"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-40 right-[-60] w-60 animate-float-medium z-20  scale-x-[-1]"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-140 left-[-60] w-60 animate-float-medium z-20"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-130 right-[-60] w-60 animate-float-medium z-20  scale-x-[-1]"
+          />
+          <div
+            style={{
+              position: "relative",
+              zIndex: 10,
+              paddingTop: "150px",
+            }}
+          >
+            <h4
+              className="leading-none"
+              style={{
+                fontFamily: '"Cinzel Decorative", Sans-serif',
+                fontSize: "32px",
+                fontWeight: 600,
+                margin: 0,
+                color: "#ffffff",
+              }}
+            >
+              Akad
+              <br />
+              Nikah
+            </h4>
 
-          <div className="countdown-timer animate-bounce-in">
-            {Object.entries(timeLeft).map(([key, value]) => (
-              <div key={key} className="countdown-item">
-                <div className="countdown-number-wrapper">
-                  <span className="countdown-number animate-flip">
-                    {value.toString().padStart(2, "0")}
-                  </span>
-                </div>
-                <span className="countdown-label">
-                  {key === "days" && "Hari"}
-                  {key === "hours" && "Jam"}
-                  {key === "minutes" && "Menit"}
-                  {key === "seconds" && "Detik"}
-                </span>
-              </div>
-            ))}
+            <h4
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "20px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "50px",
+              }}
+            >
+              JUMAT
+            </h4>
+
+            <h4
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "48px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "7px",
+              }}
+            >
+              14
+            </h4>
+            <h4
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "20px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "7px",
+              }}
+            >
+              NOVEMBER 2025
+            </h4>
+
+            <p
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "16px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "50px",
+              }}
+            >
+              Pukul 08.30 WIB - Selesai
+            </p>
+
+            <div
+              style={{
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "15px",
+                marginInline: "70px",
+              }}
+            >
+              <hr
+                style={{
+                  height: "3px", // atur ketebalan garis
+                  backgroundColor: "#ffffff", // warna garis
+                  border: "none", // hapus border default
+                  borderRadius: "2px", // opsional: biar ujungnya halus
+                }}
+              />
+            </div>
+
+            <p
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "16px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "15px",
+              }}
+            >
+              KUA Kalikotes, Kalikotes
+            </p>
+
+            <p
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "14px",
+                fontWeight: 400,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "7px",
+                marginInline: "70px",
+              }}
+            >
+              Jalan Kh. Hasyim Asari No.17, Dusun I, Kalikotes, Kec. Kalikotes,
+              Kabupaten Klaten
+            </p>
+
+            <a
+              href="https://maps.app.goo.gl/hW8JpL14mehw9zxp9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-[#ffffff] text-[#ffffff] px-4 py-2 rounded-full shadow-lg hover:bg-[#ffffff] hover:text-white transition-all duration-300"
+              style={{ marginTop: "60px" }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-5 h-5"
+                style={{ marginLeft: "10px" }}
+              >
+                <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+              </svg>
+              <p style={{ marginRight: "10px" }}>Lihat Lokasi</p>
+            </a>
+
+            <div style={{ marginTop: "180px" }}></div>
           </div>
-
-          <p className="countdown-date animate-fadeInUp-slow">
-            Menuju Resepsi Pernikahan - 16 November 2025
-          </p>
         </section>
 
-        {/* Detail Acara dengan card animations */}
         <section
           ref={(el) => {
             sectionRefs.current[4] = el as HTMLDivElement;
           }}
           className="event-section section-hidden enhanced-card"
         >
-          <h3 className="section-title-aksara animate-fadeInUp">ꦢꦺꦠ꦳ꦺꦭ꧀ꦲꦕꦫ</h3>
-          <h3 className="section-title animate-fadeInUp-delayed">
-            Detail Acara
-          </h3>
+          <img
+            src="/images/bg-akad-1-Tema-11.webp"
+            alt="Akad"
+            className="absolute top-15 w-full h-auto z-0"
+          />
 
-          <div className="event-grid">
-            <div className="event-card animate-float-hover">
-              <div className="event-icon animate-bounce-slow">💒</div>
-              <h4>Akad Nikah</h4>
-              <div className="event-details">
-                <p>📅 Jumat, 14 November 2025</p>
-                <p>⏰ 08.30 - 10.00 WIB</p>
-                <p>📍 KUA Kalikotes</p>
-                <p>Kalikotes</p>
-              </div>
-              <div className="event-decoration"></div>
+          <img
+            src="/images/bg-akad-1-Tema-11.webp"
+            alt="Akad"
+            className="absolute top-15 w-full h-auto z-0"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-40 left-[-60] w-60 animate-float-medium z-20"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-50 right-[-60] w-60 animate-float-medium z-20  scale-x-[-1]"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-130 left-[-60] w-60 animate-float-medium z-20"
+          />
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-140 right-[-60] w-60 animate-float-medium z-20  scale-x-[-1]"
+          />
+
+          <div
+            style={{
+              position: "relative",
+              zIndex: 10,
+              paddingTop: "150px",
+            }}
+          >
+            <h4
+              className="leading-none"
+              style={{
+                fontFamily: '"Cinzel Decorative", Sans-serif',
+                fontSize: "32px",
+                fontWeight: 600,
+                margin: 0,
+                color: "#ffffff",
+              }}
+            >
+              Resepsi
+              <br />
+              Nikah
+            </h4>
+
+            <h4
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "20px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "50px",
+              }}
+            >
+              MINGGU
+            </h4>
+
+            <h4
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "48px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "7px",
+              }}
+            >
+              16
+            </h4>
+            <h4
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "20px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "7px",
+              }}
+            >
+              NOVEMBER 2025
+            </h4>
+
+            <p
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "16px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "50px",
+              }}
+            >
+              Pukul 09.00 WIB - Selesai
+            </p>
+
+            <div
+              style={{
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "15px",
+                marginInline: "70px",
+              }}
+            >
+              <hr
+                style={{
+                  height: "3px", // atur ketebalan garis
+                  backgroundColor: "#ffffff", // warna garis
+                  border: "none", // hapus border default
+                  borderRadius: "2px", // opsional: biar ujungnya halus
+                }}
+              />
             </div>
 
-            <div className="event-card animate-float-hover-delayed">
-              <div className="event-icon animate-bounce-slow-delayed">🎉</div>
-              <h4>Resepsi</h4>
-              <div className="event-details">
-                <p>📅 Minggu, 16 November 2025</p>
-                <p>⏰ 09.00 - 12.00 WIB</p>
-                <p>📍 Gedung W. Wongso Menggolo</p>
-                <p>Jl. Jogja-Solo</p>
-              </div>
-              <div className="event-decoration"></div>
-            </div>
+            <p
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "16px",
+                fontWeight: 500,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "15px",
+              }}
+            >
+              Gedung W. Wongso Menggolo
+            </p>
+
+            <p
+              className="leading-none"
+              style={{
+                fontFamily: '"Nunito", Sans-serif',
+                fontSize: "14px",
+                fontWeight: 400,
+                margin: 0,
+                color: "#ffffff",
+                marginTop: "7px",
+                marginInline: "70px",
+              }}
+            >
+              Jl. Klaten - Solo No.KM.3, Ngaran, Mlese, Kec. Ceper, Kabupaten
+              Klaten
+            </p>
+
+            <a
+              href="https://maps.app.goo.gl/hQ5dQctMJPgP2z5PA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-[#ffffff] text-[#ffffff] px-4 py-2 rounded-full shadow-lg hover:bg-[#ffffff] hover:text-white transition-all duration-300"
+              style={{ marginTop: "60px" }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-5 h-5"
+                style={{ marginLeft: "10px" }}
+              >
+                <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+              </svg>
+              <p style={{ marginRight: "10px" }}>Lihat Lokasi</p>
+            </a>
+
+            <div style={{ marginTop: "180px" }}></div>
           </div>
         </section>
 
@@ -769,7 +1092,16 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             sectionRefs.current[5] = el as HTMLDivElement;
           }}
           className="couple-section section-hidden enhanced-card"
-        ></section>
+        >
+          <p>
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+            pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
+            dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
+            kasih dan sayang. Sungguh, pada yang demikian itu benar-benar
+            terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+          </p>
+          <p>(QS Ar-Rum : 21)</p>
+        </section>
 
         {/* Gallery Prewedding Slider dengan enhanced transitions */}
         <section

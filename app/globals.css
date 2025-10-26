@@ -343,18 +343,11 @@ body {
 
 /* Event Section */
 .event-section {
-  margin: 35px 0;
-  padding: 25px 20px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
-  border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .event-section h3:first-child {
   font-size: 1rem;
-  color: #5a3921;
   margin-bottom: 5px;
   font-family: "Arial Unicode MS", sans-serif;
   opacity: 0.8;
@@ -362,7 +355,6 @@ body {
 
 .event-section h3:last-child {
   font-size: 1.3rem;
-  color: #8b4513;
   margin-bottom: 20px;
   font-weight: 600;
 }
