@@ -225,8 +225,14 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
       if (result.success) {
         // Filter hanya yang ada pesan dan akan hadir
         const pesanDenganUcapan = result.data
-          .filter((item) => item.pesan && item.pesan.trim() !== "")
-          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+          .filter(
+            (item: { pesan: string; timestamp: string }) =>
+              item.pesan && item.pesan.trim() !== ""
+          )
+          .sort(
+            (a: { timestamp: string }, b: { timestamp: string }) =>
+              Number(new Date(b.timestamp)) - Number(new Date(a.timestamp))
+          );
 
         console.log("Filtered messages:", pesanDenganUcapan);
         setPesanTamu(pesanDenganUcapan);
