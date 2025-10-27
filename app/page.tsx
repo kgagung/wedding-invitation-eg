@@ -44,18 +44,6 @@ export default function HomePage() {
                 <span className="divider-line"></span>
               </div>
 
-              <p className="instruction">Silakan pilih nama tamu:</p>
-
-              <div className="guest-list">
-                {Object.entries(tamuData).map(([key, tamu]) => (
-                  <Link key={key} href={`/${key}`} className="guest-link">
-                    <span className="guest-name">{tamu.nama}</span>
-                    <span className="guest-relation">{tamu.keterangan}</span>
-                    <div className="link-arrow">→</div>
-                  </Link>
-                ))}
-              </div>
-
               <div className="card-decoration bottom"></div>
             </div>
           </section>
@@ -63,7 +51,7 @@ export default function HomePage() {
           {/* Footer */}
           <footer className="home-footer">
             <p className="footer-text">Dengan hormat yang setinggi-tingginya</p>
-            <p className="footer-couple">Erlina & Kuncoro</p>
+            <p className="footer-couple">Erlina & Galih</p>
           </footer>
         </main>
       </div>

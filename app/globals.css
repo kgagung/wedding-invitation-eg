@@ -57,8 +57,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #5a3921 100%);
-  color: white;
+  background: transparent;
   text-align: center;
   padding: 30px 20px;
   position: relative;
@@ -140,42 +139,34 @@ body {
 }
 
 .guest-info {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.05)
-  );
   padding: 25px 20px;
-  border-radius: 15px;
   margin: 25px 0;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .guest-label {
   font-size: 0.85rem;
   margin-bottom: 8px;
-  opacity: 0.9;
+  opacity: 1;
   letter-spacing: 1px;
+  color: #f9f0e1;
 }
 
-.guest-name {
+.guest-name h3 {
   font-size: 1.4rem;
   margin: 12px 0;
-  color: #ffd700;
+  color: #ffffff;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .guest-desc {
   font-size: 0.85rem;
-  opacity: 0.8;
+  opacity: 1;
   font-style: italic;
 }
 
 .open-invitation-btn {
-  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  background: linear-gradient(135deg, #fdf2d6, #fdf2d6);
   color: #5a3921;
   border: none;
   padding: 16px 45px;
@@ -185,13 +176,13 @@ body {
   cursor: pointer;
   margin: 25px 0;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   letter-spacing: 1px;
 }
 
 .open-invitation-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
 .open-invitation-btn:active {
