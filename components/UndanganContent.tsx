@@ -1820,20 +1820,11 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
         {/* Background Section */}
         <div className="relative w-full top-[-150] h-[200px] overflow-hidden">
-          <div
-            className="absolute inset-0 z-0"
-            style={{
-              backgroundColor: "#8e5a2a",
-              backgroundImage:
-                "linear-gradient(135deg, #8e5a2a 0%, #a67c52 100%)",
-            }}
-          ></div>
-
           {/* Awan Belakang */}
           <img
             src="/images/mempelai-bot1-tema-11-1024x468.webp"
             alt="Awan Belakang"
-            className="absolute bottom-0 left-0 w-full z-10 opacity-80"
+            className="absolute bottom-0 left-0 w-full z-10"
           />
 
           {/* Awan Depan */}
@@ -1850,14 +1841,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             sectionRefs.current[9] = el as HTMLDivElement;
           }}
           className="confirmation-section section-hidden enhanced-card relative z-30 -mt-20 pt-20 pb-12"
-          style={{
-            backgroundColor: "#8e5a2a",
-            backgroundImage:
-              "linear-gradient(135deg, #8e5a2a 0%, #a67c52 50%, #8e5a2a 100%)",
-          }}
         >
           {/* Dekorasi */}
-          <div className="absolute top-4 left-4 right-4 flex justify-between items-center opacity-60">
+          <div className="absolute top-6 left-4 right-4 flex justify-between items-center opacity-60">
             <img
               src="/images/cloud3-Tema-11.webp"
               alt="Cloud Left"
@@ -1893,41 +1879,46 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             </div>
 
             {/* Form Konfirmasi */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-[#FDF2D6]/30">
-              <form onSubmit={handleConfirmation} className="space-y-6">
+            <div
+              className="bg-white/20 backdrop-blur-sm rounded-xl p-10 mb-6 border border-[#FDF2D6]/30"
+              style={{ padding: "18px" }}
+            >
+              <form
+                onSubmit={handleConfirmation}
+                className="space-y-8 shadow-xl rounded-2xl p-80 max-w-md mx-auto"
+              >
                 {/* Status Kehadiran */}
                 <div>
-                  <label className="block text-sm font-medium text-[#5a3921] mb-3 text-center">
+                  <label className="block text-lg font-semibold text-[#5a3921] mb-50 text-center tracking-wide">
                     Apakah Anda akan hadir?
                   </label>
-                  <div className="flex justify-center space-x-4">
+                  <div className="flex justify-center gap-5">
                     <button
                       type="button"
                       onClick={() => {
                         setAttendanceStatus("hadir");
-                        // Reset jumlah tamu jika memilih tidak hadir
                         if (attendanceStatus === "tidak-hadir") {
                           setJumlahTamuHadir(1);
                         }
                       }}
-                      className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                      className={`flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-sm ${
                         attendanceStatus === "hadir"
-                          ? "bg-green-500 text-white shadow-lg scale-105"
+                          ? "bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg scale-105"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
                     >
                       ✅ Akan Hadir
                     </button>
+
                     <button
                       type="button"
                       onClick={() => {
                         setAttendanceStatus("tidak-hadir");
-                        // Set jumlah tamu 0 jika tidak hadir
                         setJumlahTamuHadir(0);
                       }}
-                      className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                      className={`flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-sm ${
                         attendanceStatus === "tidak-hadir"
-                          ? "bg-red-500 text-white shadow-lg scale-105"
+                          ? "bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg scale-105"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
                     >
@@ -1936,45 +1927,45 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                   </div>
                 </div>
 
-                {/* Pilihan Jumlah Tamu - Hanya tampil jika memilih "Akan Hadir" */}
+                {/* Jumlah Tamu */}
                 {attendanceStatus === "hadir" && (
                   <div className="animate-fadeIn">
-                    <label className="block text-sm font-medium text-[#5a3921] mb-3 text-center">
+                    <label className="block text-lg font-semibold text-[#5a3921] mb-4 text-center tracking-wide">
                       Berapa orang yang akan hadir?
                     </label>
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-3 gap-4">
                       {[1, 2, 3, 4, 5, 6].map((jumlah) => (
                         <button
                           key={jumlah}
                           type="button"
                           onClick={() => setJumlahTamuHadir(jumlah)}
-                          className={`py-3 rounded-lg font-semibold transition-all duration-300 border-2 ${
+                          className={`py-3 rounded-xl font-semibold transition-all duration-300 border-2 ${
                             jumlahTamuHadir === jumlah
-                              ? "bg-[#925E2D] text-white border-[#925E2D] shadow-lg scale-105"
+                              ? "bg-[#925E2D] text-white border-[#925E2D] shadow-md scale-105"
                               : "bg-white text-[#5a3921] border-[#925E2D]/30 hover:border-[#925E2D] hover:bg-[#FDF2D6]"
                           }`}
                         >
-                          {jumlah} {jumlah === 1 ? "Orang" : "Orang"}
+                          {jumlah} Orang
                         </button>
                       ))}
                     </div>
                   </div>
                 )}
 
-                {/* Pesan/Ucapan */}
+                {/* Pesan / Ucapan */}
                 <div>
-                  <label className="block text-sm font-medium text-[#5a3921] mb-2">
+                  <label className="block text-lg font-semibold text-[#5a3921] mb-2 tracking-wide">
                     Pesan / Ucapan untuk Mempelai
                     <span className="text-xs text-gray-500 ml-1">
-                      (pesan akan ditampilkan di website)
+                      (akan ditampilkan di website)
                     </span>
                   </label>
                   <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={3}
-                    className="w-full px-4 py-3 rounded-lg border border-[#925E2D]/30 focus:border-[#925E2D] focus:ring-2 focus:ring-[#925E2D]/20 transition-all duration-300 bg-white/80 resize-none"
-                    placeholder="Tuliskan ucapan dan doa untuk mempelai. Pesan Anda akan ditampilkan di website..."
+                    className="w-full px-4 py-3 rounded-xl border border-[#925E2D]/30 focus:border-[#925E2D] focus:ring-2 focus:ring-[#925E2D]/20 transition-all duration-300 bg-white/80 resize-none placeholder:text-gray-400"
+                    placeholder="Tuliskan ucapan dan doa untuk mempelai..."
                   />
                 </div>
 
@@ -1985,15 +1976,15 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                     !attendanceStatus ||
                     (attendanceStatus === "hadir" && jumlahTamuHadir === 0)
                   }
-                  className={`w-full py-4 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 ${
+                  className={`w-full py-4 px-6 rounded-xl font-bold text-lg shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 ${
                     attendanceStatus &&
                     (attendanceStatus === "tidak-hadir" || jumlahTamuHadir > 0)
-                      ? "bg-gradient-to-r from-[#925E2D] to-[#5a3921] text-white hover:shadow-xl transform hover:scale-105"
+                      ? "bg-gradient-to-r from-[#925E2D] to-[#5a3921] text-white hover:shadow-xl hover:scale-[1.03]"
                       : "bg-gray-300 text-gray-500 cursor-not-allowed"
                   }`}
                 >
-                  <span className="btn-icon">💌</span>
-                  <span className="btn-text">
+                  <span>💌</span>
+                  <span>
                     {isSubmitting ? "Mengirim..." : "Kirim Konfirmasi"}
                   </span>
                 </button>
@@ -2014,6 +2005,24 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             )}
           </div>
         </section>
+
+        {/* Background Section */}
+        <div
+          className="relative w-full top-[-600] h-[600px] overflow-hidden"
+          style={{ marginBottom: "-500px" }}
+        >
+          <div
+            style={{
+              backgroundColor: "#8e5a2a",
+              backgroundImage:
+                "linear-gradient(180deg, #8e5a2a 0%, #a67c52 80%, #8e5a2a 100%)",
+
+              height: "600px",
+              width: "auto",
+              marginBottom: "-500px",
+            }}
+          ></div>
+        </div>
 
         <section
           ref={(el) => {
