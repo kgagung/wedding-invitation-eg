@@ -6,9 +6,9 @@ import UndanganContent from "./UndanganContent";
 
 interface TamuData {
   nama: string;
-  jumlahTamu: number;
   salam: string;
   keterangan: string;
+  jumlahTamu?: number;
 }
 
 interface UndanganClientProps {

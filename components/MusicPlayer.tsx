@@ -57,11 +57,6 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
     }
   };
 
-  // Sembunyikan tombol jika auto-play berhasil
-  if (isPlaying && autoPlay) {
-    return null; // Tidak render tombol jika auto-play berhasil
-  }
-
   return (
     <button className="music-toggle-btn" onClick={toggleMusic}>
       {isPlaying ? "🔇" : "🎵"}

@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import MusicPlayer from "./MusicPlayer";
 
 interface TamuData {
   nama: string;
-  jumlahTamu: number;
+  jumlahTamu?: number;
   salam: string;
   keterangan: string;
 }
@@ -23,8 +24,6 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
     minutes: 0,
     seconds: 0,
   });
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Data foto prewedding
@@ -46,48 +45,6 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
   };
 
   const closePopup = () => setIsOpen(false);
-
-  // Initialize audio
-  useEffect(() => {
-    audioRef.current = new Audio("/audio/gamelan.mp3");
-    audioRef.current.loop = true;
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
-    };
-  }, []);
-
-  // Auto play music when component mounts
-  useEffect(() => {
-    const playMusic = async () => {
-      if (audioRef.current) {
-        try {
-          await audioRef.current.play();
-          setIsPlaying(true);
-        } catch (error) {
-          console.log("Auto-play was prevented");
-          // User interaction required
-        }
-      }
-    };
-
-    playMusic();
-  }, []);
-
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current.play();
-        setIsPlaying(true);
-      }
-    }
-  };
-
   // Countdown timer
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -198,32 +155,21 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
   // State untuk konfirmasi
   const [pesanTamu, setPesanTamu] = useState([]);
   const [loadingPesan, setLoadingPesan] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = pesanTamu.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(pesanTamu.length / itemsPerPage);
 
   // Function untuk load pesan tamu
   const loadPesanTamu = async () => {
     setLoadingPesan(true);
     try {
-      console.log("Loading pesan tamu...");
-
-      const response = await fetch("/api/konfirmasi", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        cache: "no-cache",
-      });
-
-      console.log("Response status:", response.status);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
+      const response = await fetch("/api/konfirmasi");
       const result = await response.json();
-      console.log("API response:", result);
 
       if (result.success) {
-        // Filter hanya yang ada pesan dan akan hadir
         const pesanDenganUcapan = result.data
           .filter(
             (item: { pesan: string; timestamp: string }) =>
@@ -234,14 +180,18 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
               Number(new Date(b.timestamp)) - Number(new Date(a.timestamp))
           );
 
-        console.log("Filtered messages:", pesanDenganUcapan);
-        setPesanTamu(pesanDenganUcapan);
-      } else {
-        throw new Error(result.message);
+        // Remove duplicates
+        const uniquePesan = pesanDenganUcapan.filter(
+          (item: { id: string }, index: number) =>
+            index ===
+            pesanDenganUcapan.findIndex((t: { id: string }) => t.id === item.id)
+        );
+
+        setPesanTamu(uniquePesan);
+        setCurrentPage(1); // Reset ke halaman 1 saat data baru dimuat
       }
     } catch (error) {
       console.error("Error loading messages:", error);
-      // Fallback: tampilkan pesan error yang user-friendly
       setPesanTamu([]);
     } finally {
       setLoadingPesan(false);
@@ -372,16 +322,6 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
           🌺
         </div>
       </div>
-
-      {/* Music Toggle Button */}
-      <button
-        className={`music-toggle-btn ${
-          isPlaying ? "playing" : ""
-        } animate-pulse-slow`}
-        onClick={toggleMusic}
-      >
-        {isPlaying ? "🔇" : "🎵"}
-      </button>
 
       {/* Konten Utama */}
       <main
@@ -1362,7 +1302,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
               marginBottom: "20px",
             }}
           >
-            cinta kami
+            Cinta Kami
           </h1>
 
           {/* Gallery Grid */}
@@ -1436,7 +1376,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
               marginTop: "50px",
             }}
           >
-            Cerita
+            CERITA
           </h1>
           <h1
             className="text-center mt-4"
@@ -1449,7 +1389,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
               marginBottom: "20px",
             }}
           >
-            tentang kita
+            Tentang Kita
           </h1>
 
           <img
@@ -1869,15 +1809,6 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
               Konfirmasi Kehadiran
             </h3>
 
-            {/* Info Tamu */}
-            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 mb-6 border border-[#FDF2D6]/30">
-              <p className="text-[#FDF2D6] text-center text-sm">
-                <strong>{dataTamu.nama}</strong>
-                <br />
-                <span className="opacity-90">{dataTamu.keterangan}</span>
-              </p>
-            </div>
-
             {/* Form Konfirmasi */}
             <div
               className="bg-white/20 backdrop-blur-sm rounded-xl p-10 mb-6 border border-[#FDF2D6]/30"
@@ -1885,14 +1816,20 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             >
               <form
                 onSubmit={handleConfirmation}
-                className="space-y-8 shadow-xl rounded-2xl p-80 max-w-md mx-auto"
+                className="space-y-8  rounded-2xl p-80 max-w-md mx-auto"
               >
                 {/* Status Kehadiran */}
                 <div>
-                  <label className="block text-lg font-semibold text-[#5a3921] mb-50 text-center tracking-wide">
+                  <label
+                    className="block text-lg font-semibold text-[#5a3921] mb-50 text-center tracking-wide"
+                    style={{ marginBottom: "13px" }}
+                  >
                     Apakah Anda akan hadir?
                   </label>
-                  <div className="flex justify-center gap-5">
+                  <div
+                    className="flex justify-center gap-3"
+                    style={{ marginBottom: "20px" }}
+                  >
                     <button
                       type="button"
                       onClick={() => {
@@ -1906,8 +1843,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                           ? "bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg scale-105"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
+                      style={{ padding: "5px" }}
                     >
-                      ✅ Akan Hadir
+                      Akan Hadir
                     </button>
 
                     <button
@@ -1921,8 +1859,25 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                           ? "bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg scale-105"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
+                      style={{ padding: "5px" }}
                     >
-                      ❌ Tidak Hadir
+                      Tidak Hadir
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAttendanceStatus("masih-ragu");
+                        setJumlahTamuHadir(0);
+                      }}
+                      className={`flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-sm ${
+                        attendanceStatus === "masih-ragu"
+                          ? "bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg scale-105"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                      style={{ padding: "5px" }}
+                    >
+                      Masih Ragu
                     </button>
                   </div>
                 </div>
@@ -1930,11 +1885,17 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 {/* Jumlah Tamu */}
                 {attendanceStatus === "hadir" && (
                   <div className="animate-fadeIn">
-                    <label className="block text-lg font-semibold text-[#5a3921] mb-4 text-center tracking-wide">
+                    <label
+                      className="block text-lg font-semibold text-[#5a3921] mb-4 text-center tracking-wide"
+                      style={{ marginBottom: "13px" }}
+                    >
                       Berapa orang yang akan hadir?
                     </label>
-                    <div className="grid grid-cols-3 gap-4">
-                      {[1, 2, 3, 4, 5, 6].map((jumlah) => (
+                    <div
+                      className="grid grid-cols-2 gap-4"
+                      style={{ marginBottom: "20px" }}
+                    >
+                      {[1, 2].map((jumlah) => (
                         <button
                           key={jumlah}
                           type="button"
@@ -1956,9 +1917,6 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 <div>
                   <label className="block text-lg font-semibold text-[#5a3921] mb-2 tracking-wide">
                     Pesan / Ucapan untuk Mempelai
-                    <span className="text-xs text-gray-500 ml-1">
-                      (akan ditampilkan di website)
-                    </span>
                   </label>
                   <textarea
                     value={message}
@@ -1966,6 +1924,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                     rows={3}
                     className="w-full px-4 py-3 rounded-xl border border-[#925E2D]/30 focus:border-[#925E2D] focus:ring-2 focus:ring-[#925E2D]/20 transition-all duration-300 bg-white/80 resize-none placeholder:text-gray-400"
                     placeholder="Tuliskan ucapan dan doa untuk mempelai..."
+                    style={{ paddingInline: "15px", marginBottom: "20px" }}
                   />
                 </div>
 
@@ -1978,7 +1937,9 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                   }
                   className={`w-full py-4 px-6 rounded-xl font-bold text-lg shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 ${
                     attendanceStatus &&
-                    (attendanceStatus === "tidak-hadir" || jumlahTamuHadir > 0)
+                    (attendanceStatus === "tidak-hadir" ||
+                      attendanceStatus === "masih-ragu" ||
+                      jumlahTamuHadir > 0)
                       ? "bg-gradient-to-r from-[#925E2D] to-[#5a3921] text-white hover:shadow-xl hover:scale-[1.03]"
                       : "bg-gray-300 text-gray-500 cursor-not-allowed"
                   }`}
@@ -2008,29 +1969,42 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
         {/* Background Section */}
         <div
-          className="relative w-full top-[-600] h-[600px] overflow-hidden"
-          style={{ marginBottom: "-500px" }}
+          className="relative w-full top-[-720] h-[720px] overflow-hidden"
+          style={{ marginBottom: "-620px" }}
         >
           <div
             style={{
               backgroundColor: "#8e5a2a",
               backgroundImage:
-                "linear-gradient(180deg, #8e5a2a 0%, #a67c52 80%, #8e5a2a 100%)",
+                "linear-gradient(180deg, #8e5a2a 0%, #8e5a2a 50%, #a67c52 90%, #a67c52 100%)",
 
-              height: "600px",
+              height: "720px",
               width: "auto",
               marginBottom: "-500px",
             }}
           ></div>
+
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-15 left-[-90] w-80 animate-cloud-down-right z-20"
+          />
+
+          <img
+            src="/images/Cloud6-Tema-11.webp"
+            alt="Cloud Left"
+            className="absolute top-15 right-[-90] w-80 animate-cloud-down-right z-20 scale-x-[-1]"
+          />
         </div>
 
         <section
           ref={(el) => {
             sectionRefs.current[10] = el as HTMLDivElement;
           }}
-          className="pesan-tamu-section section-hidden enhanced-card py-12 bg-[#FDF2D6]"
+          className="pesan-tamu-section section-hidden enhanced-card py-12"
+          style={{ padding: "30px" }}
         >
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="max-w-6xl mx-auto px-6">
             {/* Header */}
             <div className="text-center mb-12">
               <h2
@@ -2043,9 +2017,23 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 Ucapan & Doa
               </h2>
               <div className="w-24 h-1 bg-[#925E2D] mx-auto rounded-full"></div>
-              <p className="text-[#5a3921] mt-4 opacity-80">
+              <p
+                className="text-[#5a3921] mt-4 opacity-80"
+                style={{ marginBottom: "10px" }}
+              >
                 Doa dan ucapan dari keluarga & sahabat
               </p>
+
+              {/* Info Pagination */}
+              {pesanTamu.length > 0 && (
+                <div className="mt-4">
+                  <p className="text-[#5a3921] text-sm">
+                    Menampilkan {(currentPage - 1) * itemsPerPage + 1} -{" "}
+                    {Math.min(currentPage * itemsPerPage, pesanTamu.length)}{" "}
+                    dari {pesanTamu.length} ucapan
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Grid Pesan */}
@@ -2055,79 +2043,181 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 <p className="text-[#5a3921] text-lg">
                   Jadilah yang pertama mengirimkan ucapan!
                 </p>
+                <p className="text-[#5a3921] text-sm mt-2 opacity-70">
+                  Kirim konfirmasi kehadiran dengan pesan di atas
+                </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {pesanTamu.map(
-                  (tamu: {
-                    id: string;
-                    nama: string;
-                    keterangan: string;
-                    tanggal: string;
-                    pesan: string;
-                    kehadiran: string;
-                    jumlahTamu: number;
-                  }) => (
-                    <div
-                      key={tamu.id}
-                      className="bg-white rounded-2xl shadow-lg p-6 border border-[#925E2D]/20 hover:shadow-xl transition-all duration-300"
-                    >
-                      {/* Header Pesan */}
-                      <div className="flex items-start space-x-3 mb-4">
-                        <div className="flex-shrink-0">
-                          <div className="w-10 h-10 bg-gradient-to-br from-[#925E2D] to-[#5a3921] rounded-full flex items-center justify-center text-white text-sm font-bold">
-                            {tamu.nama.charAt(0)}
+              <>
+                {/* Pesan List */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  {currentItems.map(
+                    (tamu: {
+                      id: string;
+                      nama: string;
+                      keterangan: string;
+                      tanggal: string;
+                      pesan: string;
+                      kehadiran: string;
+                      jumlahTamu: number;
+                    }) => (
+                      <div
+                        key={tamu.id}
+                        className="bg-white rounded-2xl shadow-lg p-6 border border-[#925E2D]/20 hover:shadow-xl transition-all duration-300"
+                        style={{ padding: "20px" }}
+                      >
+                        {/* Header Pesan */}
+                        <div className="flex items-start space-x-3 mb-4">
+                          <div
+                            className="flex-shrink-0"
+                            style={{
+                              paddingRight: "10px",
+                              paddingBottom: "15px",
+                            }}
+                          >
+                            <div className="w-10 h-10 bg-gradient-to-br from-[#925E2D] to-[#5a3921] rounded-full flex items-center justify-center text-white text-sm font-bold">
+                              {tamu.nama.charAt(0)}
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-[#5a3921]">
+                              {tamu.nama}
+                            </h4>
+                            <p className="text-xs text-gray-500">
+                              {new Date(tamu.tanggal).toLocaleDateString(
+                                "id-ID"
+                              )}
+                            </p>
                           </div>
                         </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-[#5a3921]">
-                            {tamu.nama}
-                          </h4>
-                          <p className="text-xs text-gray-500">
-                            {tamu.keterangan} •{" "}
-                            {new Date(tamu.tanggal).toLocaleDateString("id-ID")}
+
+                        {/* Isi Pesan */}
+                        <div className="bg-[#FDF2D6]/50 rounded-lg p-4 border border-[#925E2D]/10">
+                          <p
+                            className="text-[#5a3921] leading-relaxed text-sm"
+                            style={{ padding: "10px" }}
+                          >
+                            "{tamu.pesan}"
                           </p>
                         </div>
                       </div>
+                    )
+                  )}
+                </div>
 
-                      {/* Isi Pesan */}
-                      <div className="bg-[#FDF2D6]/50 rounded-lg p-4 border border-[#925E2D]/10">
-                        <p className="text-[#5a3921] leading-relaxed text-sm">
-                          "{tamu.pesan}"
-                        </p>
-                      </div>
-
-                      {/* Footer */}
-                      <div className="flex justify-between items-center mt-4 pt-4 border-t border-[#925E2D]/10">
-                        <span
-                          className={`text-xs px-2 py-1 rounded-full ${
-                            tamu.kehadiran === "hadir"
-                              ? "bg-green-100 text-green-800"
-                              : "bg-red-100 text-red-800"
-                          }`}
-                        >
-                          {tamu.kehadiran === "hadir"
-                            ? "✓ Akan Hadir"
-                            : "Tidak Hadir"}
-                        </span>
-                        <span className="text-xs text-gray-400">
-                          {tamu.jumlahTamu} orang
-                        </span>
-                      </div>
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                  <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-8 pt-6">
+                    {/* Page Info */}
+                    <div
+                      className="text-sm text-[#5a3921]"
+                      style={{ marginTop: "15px" }}
+                    >
+                      Halaman {currentPage} dari {totalPages}
                     </div>
-                  )
+
+                    {/* Pagination Buttons */}
+                    <div className="flex items-center space-x-2 gap-4">
+                      {/* Previous Button */}
+                      <button
+                        onClick={() =>
+                          setCurrentPage((prev) => Math.max(prev - 1, 1))
+                        }
+                        disabled={currentPage === 1}
+                        className={`px-4 py-2 w-10 h-10 rounded-lg font-medium transition-all duration-300 ${
+                          currentPage === 1
+                            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                            : "bg-[#925E2D] text-white hover:bg-[#5a3921] shadow-lg hover:shadow-xl"
+                        }`}
+                        style={{ marginLeft: "40px" }}
+                      >
+                        ‹
+                      </button>
+
+                      {/* Page Numbers */}
+                      <div className="flex space-x-1 gap-2">
+                        {Array.from(
+                          { length: Math.min(5, totalPages) },
+                          (_, i) => {
+                            let pageNum;
+                            if (totalPages <= 5) {
+                              pageNum = i + 1;
+                            } else if (currentPage <= 3) {
+                              pageNum = i + 1;
+                            } else if (currentPage >= totalPages - 2) {
+                              pageNum = totalPages - 4 + i;
+                            } else {
+                              pageNum = currentPage - 2 + i;
+                            }
+
+                            return (
+                              <button
+                                key={pageNum}
+                                onClick={() => setCurrentPage(pageNum)}
+                                className={`w-10 h-10 rounded-lg font-medium transition-all duration-300 ${
+                                  currentPage === pageNum
+                                    ? "bg-[#5a3921] text-white shadow-lg scale-105"
+                                    : "bg-white text-[#5a3921] border border-[#925E2D]/30 hover:bg-[#FDF2D6] hover:border-[#925E2D]"
+                                }`}
+                              >
+                                {pageNum}
+                              </button>
+                            );
+                          }
+                        )}
+                      </div>
+
+                      {/* Next Button */}
+                      <button
+                        onClick={() =>
+                          setCurrentPage((prev) =>
+                            Math.min(prev + 1, totalPages)
+                          )
+                        }
+                        disabled={currentPage === totalPages}
+                        className={`px-4 py-2 w-10 h-10 rounded-lg font-medium transition-all duration-300 ${
+                          currentPage === totalPages
+                            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                            : "bg-[#925E2D] text-white hover:bg-[#5a3921] shadow-lg hover:shadow-xl"
+                        }`}
+                        style={{ marginRight: "40px" }}
+                      >
+                        ›
+                      </button>
+                    </div>
+
+                    {/* Items Per Page Selector */}
+                    <div className="flex items-center space-x-2 text-sm text-[#5a3921]">
+                      <span>Tampilkan:</span>
+                      <select
+                        value={itemsPerPage}
+                        onChange={(e) => {
+                          setItemsPerPage(Number(e.target.value));
+                          setCurrentPage(1); // Reset to first page
+                        }}
+                        className="border border-[#925E2D]/30 rounded-lg px-2 py-1 focus:border-[#925E2D] focus:ring-2 focus:ring-[#925E2D]/20"
+                      >
+                        <option value={6}>6</option>
+                        <option value={10}>10</option>
+                        <option value={15}>15</option>
+                        <option value={20}>20</option>
+                      </select>
+                      <span>per halaman</span>
+                    </div>
+                  </div>
                 )}
-              </div>
+              </>
             )}
 
             {/* Refresh Button */}
-            <div className="text-center mt-8">
+            <div className="text-center mt-8" style={{ marginTop: "20px" }}>
               <button
                 onClick={loadPesanTamu}
                 className="inline-flex items-center space-x-2 bg-[#925E2D] text-white px-6 py-3 rounded-full hover:bg-[#5a3921] transition-all duration-300 shadow-lg hover:shadow-xl"
+                style={{ padding: "5px" }}
               >
                 <span>🔄</span>
-                <span>Muat Ulang Pesan</span>
+                <span>Muat Ulang Pesan Terbaru</span>
               </button>
             </div>
           </div>
@@ -2136,25 +2226,51 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
 
       {/* Enhanced Footer */}
       <footer className="invitation-footer enhanced-footer">
+        <img
+          src="/images/prewed-edit.jpg"
+          alt="Awan Belakang"
+          className="relative top-[-10] left-0 w-full z-10"
+          style={{
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px rgba(0,0,0,0.5)",
+            marginBottom: "20px",
+          }}
+        />
+
         <div className="footer-decoration top"></div>
 
         <div className="footer-content">
-          <p className="footer-aksara animate-fadeInUp">
-            ꦩꦠꦸꦂꦤꦸꦮꦸꦤ꧀ꦲꦶꦁꦒꦼꦃꦲꦸꦠꦮꦶꦫꦤꦺꦴꦩꦠꦼꦱ꧀ꦱꦶ
-          </p>
-          <p className="footer-text animate-fadeInUp-delayed">
-            Matur nuwun ingkang gegah utawi rinomatosi
+          <p
+            className="footer-text animate-fadeInUp-delayed"
+            style={{ marginBottom: "15px" }}
+          >
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila
+            Bapak/Ibu/Saudara/i, berkenan hadir dalam acara bahagia ini dan
+            memberikan doa restu kepada kami. Wassalamu'alaikum Wr. Wb.
           </p>
           <p className="footer-text-sub animate-fadeInUp-slower">
-            Terima kasih atas perhatiannya
+            Kami yang berbahagia
           </p>
         </div>
 
-        <div className="footer-couple animate-bounce-very-slow">
-          <span>Erlina & Galih</span>
+        <div className="footer-couple">
+          <h1
+            style={{
+              fontFamily: '"Cinzel Decorative", Sans-serif',
+              fontSize: "28px",
+              fontWeight: 600,
+              color: "#5a3921",
+              lineHeight: "1.2",
+              marginBottom: "40px",
+            }}
+          >
+            Erlina & Galih
+          </h1>
         </div>
 
-        <div className="footer-decoration bottom"></div>
+        <div className="footer-decoration bottom">
+          <p>@2025</p>
+        </div>
       </footer>
 
       {/* Custom Notification */}
