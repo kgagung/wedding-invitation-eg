@@ -76,12 +76,18 @@ export default function AdminDashboard() {
   const totalTidakHadir = confirmations.filter(
     (c) => c.kehadiran === "tidak-hadir"
   ).length;
+  const totalMasihRagu = confirmations.filter(
+    (c) => c.kehadiran === "masih-ragu"
+  ).length;
 
   return (
-    <div className="min-h-screen bg-[#FDF2D6] py-8">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="min-h-screen bg-[#FDF2D6] py-8" style={{ all: "revert" }}>
+      <div className="max-w-6xl mx-auto px-4" style={{ padding: "10px" }}>
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
+        <div
+          className="flex justify-between items-center mb-8"
+          style={{ marginBottom: "20px" }}
+        >
           <div>
             <h1
               className="text-3xl font-bold"
@@ -97,28 +103,53 @@ export default function AdminDashboard() {
           <button
             onClick={handleLogout}
             className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+            style={{ padding: "10px" }}
           >
             Logout
           </button>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20">
+        <div
+          className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8"
+          style={{ marginBottom: "20px" }}
+        >
+          <div
+            className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20"
+            style={{ padding: "10px", textAlign: "center" }}
+          >
             <div className="text-2xl font-bold text-[#5a3921]">{totalTamu}</div>
             <div className="text-gray-600">Total Tamu</div>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20">
+          <div
+            className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20"
+            style={{ padding: "10px", textAlign: "center" }}
+          >
             <div className="text-2xl font-bold text-green-600">
               {totalKonfirmasi}
             </div>
             <div className="text-gray-600">Total Konfirmasi</div>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20">
+          <div
+            className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20"
+            style={{ padding: "10px", textAlign: "center" }}
+          >
             <div className="text-2xl font-bold text-blue-600">{totalHadir}</div>
             <div className="text-gray-600">Akan Hadir</div>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20">
+          <div
+            className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20"
+            style={{ padding: "10px", textAlign: "center" }}
+          >
+            <div className="text-2xl font-bold text-orange-600">
+              {totalMasihRagu}
+            </div>
+            <div className="text-gray-600">Masih Ragu</div>
+          </div>
+          <div
+            className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20"
+            style={{ padding: "10px", textAlign: "center" }}
+          >
             <div className="text-2xl font-bold text-red-600">
               {totalTidakHadir}
             </div>
@@ -128,7 +159,10 @@ export default function AdminDashboard() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Daftar Tamu */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20">
+          <div
+            className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20"
+            style={{ padding: "10px" }}
+          >
             <h2 className="text-xl font-bold text-[#5a3921] mb-4">
               Daftar Tamu
             </h2>
@@ -159,7 +193,10 @@ export default function AdminDashboard() {
           </div>
 
           {/* Konfirmasi Terbaru */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20">
+          <div
+            className="bg-white rounded-2xl p-6 shadow-lg border border-[#925E2D]/20"
+            style={{ padding: "10px" }}
+          >
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold text-[#5a3921]">
                 Konfirmasi Terbaru

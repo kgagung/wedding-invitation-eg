@@ -1673,18 +1673,18 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 <div className="bank-card animate-slideIn-left">
                   <div className="bank-header">
                     <img
-                      src="/images/bca-logo.png"
-                      alt="BCA"
+                      src="/images/logo-bni.png"
+                      alt="BNI"
                       className="bank-logo animate-bounce-slow"
                     />
                     <div className="bank-info">
                       <p className="bank-name">a.n Erlina Elviana Istiqomah</p>
-                      <p className="account-number">1380 0123 4567 8901</p>
+                      <p className="account-number">1176 8531 11</p>
                     </div>
                   </div>
                   <button
                     className="copy-btn animate-pulse-gentle"
-                    onClick={() => copyToClipboard("1380012345678901")}
+                    onClick={() => copyToClipboard("1176853111")}
                   >
                     📋 Salin No. Rekening
                   </button>
@@ -1694,20 +1694,20 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 <div className="bank-card animate-slideIn-right">
                   <div className="bank-header">
                     <img
-                      src="/images/bri-logo.png"
-                      alt="BRI"
+                      src="/images/logo-dana.jpg"
+                      alt="Dana"
                       className="bank-logo animate-bounce-slow-delayed"
                     />
                     <div className="bank-info">
-                      <p className="bank-name">a.n Kuncoro Galih Agung</p>
-                      <p className="account-number">3401 0123 4567 8901</p>
+                      <p className="bank-name">a.n Erlina Elviana Istiqomah</p>
+                      <p className="account-number">0896 0365 6190</p>
                     </div>
                   </div>
                   <button
                     className="copy-btn animate-pulse-gentle"
-                    onClick={() => copyToClipboard("3401012345678901")}
+                    onClick={() => copyToClipboard("089603656190")}
                   >
-                    📋 Salin No. Rekening
+                    📋 Salin No. Dana
                   </button>
                 </div>
 
@@ -1715,20 +1715,20 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                 <div className="bank-card animate-slideIn-left-delayed">
                   <div className="bank-header">
                     <img
-                      src="/images/gopay-logo.png"
-                      alt="Gopay"
+                      src="/images/logo-shopeepay.png"
+                      alt="Shopee Pay"
                       className="bank-logo animate-bounce-slow"
                     />
                     <div className="bank-info">
                       <p className="bank-name">a.n Erlina Elviana Istoqomah</p>
-                      <p className="account-number">0838 5272 1234</p>
+                      <p className="account-number">0896 0365 6190</p>
                     </div>
                   </div>
                   <button
                     className="copy-btn animate-pulse-gentle"
-                    onClick={() => copyToClipboard("083852721234")}
+                    onClick={() => copyToClipboard("089603656190")}
                   >
-                    📋 Salin No. e-wallet
+                    📋 Salin No. Shopee Pay
                   </button>
                 </div>
 
@@ -1739,18 +1739,16 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                     <p className="address-title">Kirimkan Hadiah kepada</p>
                     <p className="address-name">MEMPELAI</p>
                     <p className="address-detail">
-                      Jl. Prigi Wetan No. 123, Kalikotes, Klaten, Jawa Tengah
+                      Prigiwetan, Jogosetran, Kalikotes, Klaten, Jawa Tengah
                     </p>
                   </div>
                   <button
                     className="copy-btn animate-pulse-gentle"
                     onClick={() =>
-                      copyToClipboard(
-                        "Jl. Prigi Wetan No. 123, Kalikotes, Klaten, Jawa Tengah"
-                      )
+                      window.open("https://maps.app.goo.gl/i2jnbXF4HCk6zGbPA")
                     }
                   >
-                    📋 Salin Alamat
+                    📋 Buka Alamat
                   </button>
                 </div>
               </div>
@@ -1872,7 +1870,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                       }}
                       className={`flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-sm ${
                         attendanceStatus === "masih-ragu"
-                          ? "bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg scale-105"
+                          ? "bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-lg scale-105"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
                       style={{ padding: "5px" }}
@@ -1968,34 +1966,67 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
         </section>
 
         {/* Background Section */}
-        <div
-          className="relative w-full top-[-720] h-[720px] overflow-hidden"
-          style={{ marginBottom: "-620px" }}
-        >
+        {attendanceStatus === "hadir" && (
           <div
-            style={{
-              backgroundColor: "#8e5a2a",
-              backgroundImage:
-                "linear-gradient(180deg, #8e5a2a 0%, #8e5a2a 50%, #a67c52 90%, #a67c52 100%)",
+            className="relative w-full top-[-750px] h-[720px] overflow-hidden"
+            style={{ marginBottom: "-620px" }}
+          >
+            <div
+              style={{
+                backgroundColor: "#8e5a2a",
+                backgroundImage:
+                  "linear-gradient(180deg, #8e5a2a 0%, #8e5a2a 50%, #a67c52 90%, #a67c52 100%)",
 
-              height: "720px",
-              width: "auto",
-              marginBottom: "-500px",
-            }}
-          ></div>
+                height: "720px",
+                width: "auto",
+                marginBottom: "-500px",
+              }}
+            ></div>
 
-          <img
-            src="/images/Cloud6-Tema-11.webp"
-            alt="Cloud Left"
-            className="absolute top-15 left-[-90] w-80 animate-cloud-down-right z-20"
-          />
+            <img
+              src="/images/Cloud6-Tema-11.webp"
+              alt="Cloud Left"
+              className="absolute top-0 left-[-90] w-80 animate-cloud-down-right z-100"
+            />
 
-          <img
-            src="/images/Cloud6-Tema-11.webp"
-            alt="Cloud Left"
-            className="absolute top-15 right-[-90] w-80 animate-cloud-down-right z-20 scale-x-[-1]"
-          />
-        </div>
+            <img
+              src="/images/Cloud6-Tema-11.webp"
+              alt="Cloud Left"
+              className="absolute top-0 right-[-90] w-80 animate-cloud-down-right z-100 scale-x-[-1]"
+            />
+          </div>
+        )}
+
+        {attendanceStatus != "hadir" && (
+          <div
+            className="relative w-full top-[-660px] h-[720px] overflow-hidden"
+            style={{ marginBottom: "-620px" }}
+          >
+            <div
+              style={{
+                backgroundColor: "#8e5a2a",
+                backgroundImage:
+                  "linear-gradient(180deg, #8e5a2a 0%, #8e5a2a 50%, #a67c52 90%, #a67c52 100%)",
+
+                height: "720px",
+                width: "auto",
+                marginBottom: "-500px",
+              }}
+            ></div>
+
+            <img
+              src="/images/Cloud6-Tema-11.webp"
+              alt="Cloud Left"
+              className="absolute top-0 left-[-90] w-80 animate-cloud-down-right z-20"
+            />
+
+            <img
+              src="/images/Cloud6-Tema-11.webp"
+              alt="Cloud Left"
+              className="absolute top-0 right-[-90] w-80 animate-cloud-down-right z-20 scale-x-[-1]"
+            />
+          </div>
+        )}
 
         <section
           ref={(el) => {
@@ -2050,7 +2081,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
             ) : (
               <>
                 {/* Pesan List */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div className="grid grid-cols-1 gap-6 mb-8">
                   {currentItems.map(
                     (tamu: {
                       id: string;

@@ -49,7 +49,10 @@ export default function AdminLogin() {
         backgroundSize: "contain",
       }}
     >
-      <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-[#925E2D]/20 max-w-md w-full mx-4">
+      <div
+        className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-[#925E2D]/20 max-w-md w-full mx-4"
+        style={{ padding: "20px" }}
+      >
         <div className="text-center mb-8">
           <div className="text-4xl mb-4">🔐</div>
           <h1
@@ -65,7 +68,7 @@ export default function AdminLogin() {
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
-          <div>
+          <div style={{ marginBottom: "10px" }}>
             <label className="block text-sm font-medium text-[#5a3921] mb-2">
               Username
             </label>
@@ -76,10 +79,11 @@ export default function AdminLogin() {
               className="w-full px-4 py-3 rounded-lg border border-[#925E2D]/30 focus:border-[#925E2D] focus:ring-2 focus:ring-[#925E2D]/20 transition-all duration-300"
               placeholder="Masukkan username"
               required
+              style={{ padding: "5px 10px" }}
             />
           </div>
 
-          <div>
+          <div style={{ marginBottom: "20px" }}>
             <label className="block text-sm font-medium text-[#5a3921] mb-2">
               Password
             </label>
@@ -90,6 +94,7 @@ export default function AdminLogin() {
               className="w-full px-4 py-3 rounded-lg border border-[#925E2D]/30 focus:border-[#925E2D] focus:ring-2 focus:ring-[#925E2D]/20 transition-all duration-300"
               placeholder="Masukkan password"
               required
+              style={{ padding: "5px 10px" }}
             />
           </div>
 

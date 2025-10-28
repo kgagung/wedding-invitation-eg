@@ -150,18 +150,18 @@ export default function UndanganClient({ dataTamu }: UndanganClientProps) {
           <img
             src="/images/mempelai-bot1-tema-11-1024x468.webp"
             alt="Awan Belakang"
-            className="absolute top-91 left-0 w-full z-0]"
+            className="absolute top-91 left-0 w-full z-1]"
           />
 
           {/* Awan Depan */}
           <img
             src="/images/mempelai-bot2-tema-11-1024x304.webp"
             alt="Awan Depan"
-            className="absolute top-110 left-0 w-full z-0"
+            className="absolute top-107 left-0 w-full z-1"
           />
 
           {/* Background Section */}
-          <div className="absolute w-full top-[565] h-[305px] overflow-hidden">
+          <div className="absolute w-full top-[538] h-[305px] overflow-hidden z-0">
             <div
               style={{
                 backgroundColor: "#8e5a2a",
