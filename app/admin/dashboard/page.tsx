@@ -181,7 +181,7 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                   <Link
-                    href={`/${key}`}
+                    href={`/erlin-galih/${key}`}
                     className="text-[#925E2D] hover:text-[#5a3921] text-sm"
                     target="_blank"
                   >

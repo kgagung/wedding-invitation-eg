@@ -11,7 +11,10 @@ export default function NotFound() {
         backgroundSize: "contain",
       }}
     >
-      <div className="text-center bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-[#925E2D]/20 max-w-md mx-4">
+      <div
+        className="text-center bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-[#925E2D]/20 max-w-md mx-4"
+        style={{ padding: "10px 20px" }}
+      >
         <div className="mb-6">
           <div className="text-6xl mb-4">❌</div>
           <h1
@@ -33,6 +36,7 @@ export default function NotFound() {
           <Link
             href="/"
             className="block w-full bg-[#925E2D] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#5a3921] transition-all duration-300 shadow-lg hover:shadow-xl"
+            style={{ padding: "10px 20px" }}
           >
             Kembali ke Halaman Utama
           </Link>

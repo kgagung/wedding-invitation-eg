@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import tamuData from "../../data/tamu.json";
-import UndanganClient from "../../components/UndanganClient";
+import tamuData from "../../../data/tamu.json";
+import UndanganClient from "../../../components/UndanganClient";
 
 interface PageProps {
   params: Promise<{
