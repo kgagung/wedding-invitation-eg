@@ -1,27 +1,361 @@
 {
-  "amalia-rizki": {
+  "amalia-rizki-safitri": {
     "nama": "Amalia Rizki",
     "salam": "Saudara/i",
     "keterangan": "Teman SMA Mempelai Wanita"
   },
-  "sari-dewi": {
+  "aulia-fitriyyah-sari-dewi": {
     "nama": "Sari Dewi",
-    "salam": "Saudari",
+    "salam": "Saudara/i",
     "keterangan": "Teman SMA Mempelai Wanita"
   },
-  "divani-dima": {
-    "nama": "Divani Dima Kurniawan",
-    "salam": "Wedus",
-    "keterangan": "Teman ASU"
+  "fadila-balqis-arifah": {
+    "nama": "Fadila Balqis Arifah",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
   },
-  "lutfian-fajrul": {
-    "nama": "Bapa",
-    "salam": "Shalom",
-    "keterangan": "Tujuan Umat"
+  "dewi-anggraini": {
+    "nama": "Dewi Anggraini",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
   },
-  "muh-addin": {
-    "nama": "Raden Mas Addin",
-    "salam": "Shalom",
-    "keterangan": "Tujuan Umat"
+  "oktaviana-sri-wulandari": {
+    "nama": "Oktaviana Sri Wulandari",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "silvya-audi-tamara": {
+    "nama": "Silvya Audi Tamara",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "tayura-kanya": {
+    "nama": "Tayura Kanya",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "dhevy-warapsari": {
+    "nama": "Dhevy Warapsari",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "izzati-karna-w": {
+    "nama": "Izzati Karna W",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "amalia-luthfi": {
+    "nama": "Amalia Luthfi",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "aurelia-angel-c": {
+    "nama": "Aurelia Angel C",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "indri-yana-yuniati": {
+    "nama": "Indri Yana Yuniati",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "rara-ratri": {
+    "nama": "Rara Ratri",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "rian-nur": {
+    "nama": "Rian Nur",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "vilia-ernabe": {
+    "nama": "Vilia Ernabe",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "umi-fadhillah-n": {
+    "nama": "Umi Fadhillah N",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "sagita-pradnya-p": {
+    "nama": "Sagita Pradnya P",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "adysta-sofia-h": {
+    "nama": "Adysta Sofia H",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "angelina-prasaedentia": {
+    "nama": "Angelina Prasaedentia",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "danie-resa": {
+    "nama": "Danie Resa",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "f-alvista-della-vio-c": {
+    "nama": "F Alvista Della Vio C",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "pius-hernovan": {
+    "nama": "Pius Hernovan",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "puput-ari-w": {
+    "nama": "Puput Ari W",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "vincentius-axel": {
+    "nama": "Vincentius Axel",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "yohana-satvika": {
+    "nama": "Yohana Satvika",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "agatha-sintia": {
+    "nama": "Agatha Sintia",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "agatha-cece": {
+    "nama": "Agatha Cece",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "bernadus-raka": {
+    "nama": "Bernadus Raka",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "mutiara-mary": {
+    "nama": "Mutiara Mary",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "faizal-alifardian": {
+    "nama": "Faizal Alifardian",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "erinda-putri": {
+    "nama": "Erinda Putri",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "erwin-anas": {
+    "nama": "Erwin Anas",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "oryza-sativa": {
+    "nama": "Oryza Sativa",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "sevinka-shafalena": {
+    "nama": "Sevinka Shafalena",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "amel-putria-a": {
+    "nama": "Amel Putria A",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "widakdo": {
+    "nama": "Widakdo",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "yanuar-cahya-k": {
+    "nama": "Yanuar Cahya K",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "daffa-stefian": {
+    "nama": "Daffa Stefian",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "inkyrana-mahreza": {
+    "nama": "Inkyrana Mahreza",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "auliya-sabrina": {
+    "nama": "Auliya Sabrina",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "daniel-farhan": {
+    "nama": "Daniel Farhan",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "gebry-nepta": {
+    "nama": "Gebry Nepta",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "shakira-sinantia-shinta": {
+    "nama": "Shakira Sinantia Shinta",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "moh-syahdan": {
+    "nama": "Moh Syahdan",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "nur-vita": {
+    "nama": "Nur Vita",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "oktavia-belawati": {
+    "nama": "Oktavia Belawati",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "silvia-iffah": {
+    "nama": "Silvia Iffah",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "wulan-kusumawati": {
+    "nama": "Wulan Kusumawati",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "yuni-puji": {
+    "nama": "Yuni Puji",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "zulfa-dina": {
+    "nama": "Zulfa Dina",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Wanita"
+  },
+  "bima-irpan": {
+    "nama": "Bima Irpan",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "novitasari": {
+    "nama": "Novitasari",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "aulia-mila": {
+    "nama": "Aulia Mila",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "vincentia-o-p": {
+    "nama": "Vincentia O P",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "kharisma-saski-larasati": {
+    "nama": "Kharisma Saski Larasati",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Sekolah Mempelai Wanita"
+  },
+  "novi-ambarwati": {
+    "nama": "Novi Ambarwati",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "imelda-putri": {
+    "nama": "Imelda Putri",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "sekar-sulendra": {
+    "nama": "Sekar Sulendra",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "ajeng-elsa": {
+    "nama": "Ajeng Elsa",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "putri-aini": {
+    "nama": "Putri Aini",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "aji huda": {
+    "nama": "Aji Huda",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "andreas-wahyu": {
+    "nama": "Andreas Wahyu",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "febby-novita": {
+    "nama": "Febby Novita",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "imam-prasetyo": {
+    "nama": "Imam Prasetyo",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "azzawasinta": {
+    "nama": "Azzawasinta",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "betari-harresti": {
+    "nama": "Betari Harresti",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "bintoro-yoyok": {
+    "nama": "Bintoro Yoyok",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "galang-wahyu": {
+    "nama": "Galang Wahyu",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "feronika-putri": {
+    "nama": "Feronika Putri",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "nina-putri": {
+    "nama": "Nina Putri",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "yayas-anggraini": {
+    "nama": "Yayas Anggraini",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "agnes-murti": {
+    "nama": "Agnes Murti",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
   }
-}
