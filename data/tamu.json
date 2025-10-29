@@ -358,5 +358,200 @@
     "nama": "Agnes Murti",
     "salam": "Saudara/i",
     "keterangan": "Teman Mempelai Wanita"
+  },
+  "yosa": {
+    "nama": "Yosa",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "neffi": {
+    "nama": "Neffi",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "wendy": {
+    "nama": "Wendy",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "kurnia": {
+    "nama": "Kurnia",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "lutfia": {
+    "nama": "Lutfia",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "winda": {
+    "nama": "Winda",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "putri": {
+    "nama": "Putri",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "lely": {
+    "nama": "Lely",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "anjas": {
+    "nama": "Anjas",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "sriyanto": {
+    "nama": "Sriyanto",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "reni": {
+    "nama": "Reni",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "agus-sutrisno": {
+    "nama": "Agus Sutrisno",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "lutfian-fajrul-rohman": {
+    "nama": "Lutfian Fajrul Rohman",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "divani-dima-kurniawan": {
+    "nama": "Divani Dima Kurniawan",
+    "salam": "Saudara/i",
+    "keterangan": "TemanMempelai Pria"
+  },
+  "thoriq-tsabit": {
+    "nama": "Thoriq Tsabit",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "bagas-aji": {
+    "nama": "Bagas Aji",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "m.-hanif-dwiki-d": {
+    "nama": "M. Hanif Dwiki D",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "ryno-seto": {
+    "nama": "Ryno Seto",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "hengky-ngesti": {
+    "nama": "Hengky Ngesti",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "dzulfikar": {
+    "nama": "Dzulfikar",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "dzikri-assadudin": {
+    "nama": "Dzikri Assadudin",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "aan-radiansyah": {
+    "nama": "Aan Radiansyah",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "naufal-zuhair": {
+    "nama": "Naufal Zuhair",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "muh.-rifqy": {
+    "nama": "Muh. Rifqy",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "fanly-indra": {
+    "nama": "Fanly Indra",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Pria"
+  },
+  "yusuf-rachmad-w": {
+    "nama": "Yusuf Rachmad W",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "thomas-budiarjo": {
+    "nama": "Thomas Budiarjo",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "hizkya-firstadipa": {
+    "nama": "Hizkya Firstadipa",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "hamonangan-jonathan": {
+    "nama": "Hamonangan Jonathan",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "gilang-zira": {
+    "nama": "Gilang Zira",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "muh.-luthfi-harits": {
+    "nama": "Muh. Luthfi Harits",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "alvi-hidayati": {
+    "nama": "Alvi Hidayati",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "verna": {
+    "nama": "Verna",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "alldila": {
+    "nama": "Alldila",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "maura-yufi": {
+    "nama": "Maura Yufi",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "eka-samsiati": {
+    "nama": "Eka Samsiati",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kuliah Mempelai Pria"
+  },
+  "edi-kus-budiarjo": {
+    "nama": "Edi Kus Budiarjo",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kerja Mempelai Pria"
+  },
+  "ajeng": {
+    "nama": "Ajeng",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kerja Mempelai Pria"
+  },
+  "rhaeni-febrianti": {
+    "nama": "Rhaeni Febrianti",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Kerja Mempelai Pria"
   }
 }
