@@ -13,7 +13,7 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
   useEffect(() => {
     // Initialize audio
     audioRef.current = new Audio(
-      "/audio/Nadin Amizah - Berpayung Tuhan (Official Music Video) - Nadin Amizah.mp3"
+      "/audio/gamelan-in-new-world.mp3"
     ); // Ganti dengan file musik Anda
     audioRef.current.loop = true;
 
