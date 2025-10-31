@@ -634,11 +634,6 @@
     "salam": "Saudara/i",
     "keterangan": "Keluarga"
   },
-  "mujiyono": {
-    "nama": "Mujiyono",
-    "salam": "Saudara/i",
-    "keterangan": "Teman Orang Tua"
-  },
   "fitriani-terbit-nugroho": {
     "nama": "Fitriani Terbit Nugroho",
     "salam": "Saudara/i",
@@ -678,5 +673,9 @@
     "nama": "Darsono",
     "salam": "Saudara/i",
     "keterangan": "Teman Orang Tua"
-  }
+  },
+  "mujiyono,-m.t.": {
+    "nama": "Mujiyono, M.T.",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Orang Tua"
 }
