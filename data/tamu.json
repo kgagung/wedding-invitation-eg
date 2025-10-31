@@ -618,5 +618,15 @@
     "nama": "Sarwo Priyanto",
     "salam": "Saudara/i",
     "keterangan": "Teman Kerja Mempelai Pria"
+  },
+  "laras": {
+    "nama": "Laras",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
+  },
+  "wenny": {
+    "nama": "Wenny",
+    "salam": "Saudara/i",
+    "keterangan": "Teman Mempelai Wanita"
   }
 }
