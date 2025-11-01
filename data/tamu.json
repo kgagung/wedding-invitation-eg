@@ -599,12 +599,12 @@
     "salam": "Saudara/i",
     "keterangan": "Teman Orang Tua"
   },
-    "bambang-margono,-s.pd-m.m.": {
+    "bambang-margono,-s.pd-m.m": {
     "nama": "Bambang Margono, S.Pd., M.M.",
     "salam": "Saudara/i",
     "keterangan": "Keluarga"
   },
-  "sika-awan-martin-luter,-s.pd.": {
+  "sika-awan-martin-luter,-s.pd": {
     "nama": "Sika Awan Martin Luter, S.Pd.",
     "salam": "Saudara/i",
     "keterangan": "Keluarga"
@@ -663,15 +663,5 @@
     "nama": "Mujiyono, M.T.",
     "salam": "Saudara/i",
     "keterangan": "Teman Orang Tua"
-  },
-  "bambang-margono": {
-    "nama": "Bambang Margono",
-    "salam": "Saudara/i",
-    "keterangan": "Keluarga"
-  },
-  "sika-awan-martin-luter": {
-    "nama": "Sika Awan Martin Luter",
-    "salam": "Saudara/i",
-    "keterangan": "Keluarga"
   }
 }
