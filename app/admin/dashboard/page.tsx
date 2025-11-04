@@ -214,7 +214,7 @@ export default function AdminDashboard() {
                   Belum ada konfirmasi
                 </p>
               ) : (
-                confirmations.slice(0, 10).map((confirmation, index) => (
+                confirmations.slice(0, 200).map((confirmation, index) => (
                   <div
                     key={index}
                     className="p-3 border border-[#925E2D]/10 rounded-lg"
