@@ -1455,7 +1455,7 @@ export default function UndanganContent({ dataTamu }: UndanganContentProps) {
                       className="text-sm leading-relaxed"
                       style={{ textAlign: "justify" }}
                     >
-                      Masih teringat saat pertama kali kamu bertemu, yaitu
+                      Masih teringat saat pertama kali kami bertemu, yaitu
                       mengikuti ekstrakurikuler yang sama. Saat itu kami kelas
                       11 SMA, mengikuti ekstrakurikuler karawitan. Pertemanan
                       kami semakin dekat karena banyak bertemu untuk
